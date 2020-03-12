@@ -1,4 +1,4 @@
-package com.lanwq.nettytest;
+package com.lanwq.network_programing.netty;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

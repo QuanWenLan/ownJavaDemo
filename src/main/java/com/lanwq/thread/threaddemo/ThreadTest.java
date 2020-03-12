@@ -1,4 +1,4 @@
-package com.lanwq.threaddemo;
+package com.lanwq.thread.threaddemo;
 
 /**
  * @program: designPrinciple -->ThreadTest

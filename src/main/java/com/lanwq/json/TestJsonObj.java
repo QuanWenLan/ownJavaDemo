@@ -1,4 +1,4 @@
-package com.lanwq;
+package com.lanwq.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
