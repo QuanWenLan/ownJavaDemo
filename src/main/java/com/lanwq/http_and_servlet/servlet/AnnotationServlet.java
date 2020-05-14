@@ -17,3 +17,7 @@ public class AnnotationServlet extends HttpServlet {
         response.getWriter().write("多个URLPatterns");
     }
 }
+
+/**
+ * 参见servlet3.0模块
+ */
