@@ -1,4 +1,4 @@
-package com.lanwq.networkprograming.socket;
+package com.lanwq.networkprogramming.socket;
 
 import java.net.*;
 

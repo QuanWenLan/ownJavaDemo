@@ -1,4 +1,4 @@
-package com.lanwq.networkprograming.netty;
+package com.lanwq.networkprogramming.netty;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
