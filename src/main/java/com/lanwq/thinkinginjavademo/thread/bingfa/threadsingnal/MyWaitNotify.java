@@ -2,7 +2,7 @@ package com.lanwq.thinkinginjavademo.thread.bingfa.threadsingnal;
 
 /**
  * @ClassName MyWaitNotify
- * @Description TODO 线程之间的通信：wait(),notify()和notifyAll()，线程如何通过这些方法通信
+ * @Description TODO 线程之间的通信：3，wait(),notify()和notifyAll()，线程如何通过这些方法通信
  * @Author lanwenquan
  * @Date 2020/5/25 16:33
  */
@@ -18,7 +18,7 @@ package com.lanwq.thinkinginjavademo.thread.bingfa.threadsingnal;
  */
 public class MyWaitNotify {
 
-    MonitorObject myMonitorObject = new MonitorObject();
+    private MonitorObject myMonitorObject = new MonitorObject();
 
     /**
      * 如你所见，不管是等待线程还是唤醒线程都在同步块里调用wait()和notify()。这是强制性的！一个线程如果没有持有对象锁，
