@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="userGroupListing" pageWidth="750" pageHeight="600" columnWidth="710" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="6676c0f4-d46c-4929-9011-21dd642d8193">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="title" class="java.lang.String"/>
+	<parameter name="fromScope" class="java.lang.String"/>
+	<parameter name="toScope" class="java.lang.String"/>
+	<parameter name="companyName" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="userId" class="java.lang.String"/>
+	<field name="userName" class="java.lang.String"/>
+	<field name="loginInfoList" class="java.util.List"/>
+	<field name="userPackage" class="java.lang.String"/>
+	<variable name="getCurrentCount" class="java.lang.Integer" incrementType="Report"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{userPackage}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField>
+					<reportElement x="0" y="0" width="100" height="20" uuid="f3e3cbe8-bec8-477f-bed3-7c1c3f162595"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["User Type     " + $F{userPackage}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField evaluationTime="Band">
+					<reportElement x="380" y="0" width="150" height="20" uuid="0373aacb-e4a7-4653-a96f-220668804a1f">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["No. of Login User  " + $V{getCurrentCount}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="240" y="0" width="140" height="20" uuid="6d705eb2-1478-40d2-9e88-eb3008d7dcd2">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["User Type     " + $F{userPackage}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="230" y="0" width="213" height="35" uuid="be81c10f-effe-4d92-926a-9bd473569617">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{companyName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="35" width="213" height="20" uuid="f1aade47-6130-428d-91ab-2158e545cdf5">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="569" y="25" width="140" height="30" uuid="ae52889d-9199-4bbc-ab32-e157e008a1c0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd-MMM-yyyy HH:mm:ss", java.util.Locale.ENGLISH).format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="330" y="57" width="380" height="23" uuid="7dc542c8-4dce-4285-bdef-2981c54f5572"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["From User Group Code:" + $P{fromScope} + " To User Group Code:" + $P{toScope}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="01648bd5-96e8-4a0c-be6c-b3c8871923b9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ARIALUNI" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{column.userId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="30" uuid="8bfcad2d-bc86-4cd9-a61c-5a1e9a11eb2b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ARIALUNI" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{column.userName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="180" height="30" uuid="dda77bae-ff47-4b81-a287-6c0eb53454d3">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ARIALUNI" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{column.lastLoginTime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="0" width="180" height="30" uuid="0580ad0b-75d7-4c56-aba7-d7f80fe22680">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ARIALUNI" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{column.stationId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="0" width="110" height="30" uuid="de5960c4-7927-4443-8f82-74e87ab45bd8">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ARIALUNI" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{column.IPAddress}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="30" width="710" height="1" uuid="3f79ccaf-8063-448b-bbf2-d0f7cff85c46">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<elementGroup>
+				<textField>
+					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="0" width="100" height="20" uuid="441c9c38-3090-41c2-9ba8-95c0ff78ed32">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea327a72-6b53-4542-8a79-8b67b7aa3efe"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{userId}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="100" y="0" width="100" height="20" uuid="9587821b-9635-45b3-a434-b7f22939d5bb">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ae23908-d3ae-41f8-bf4f-42990a2a96e9"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{userName}]]></textFieldExpression>
+				</textField>
+				<subreport>
+					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="240" y="0" width="470" height="20" uuid="092b21b2-e79c-482e-bca5-e6641d0e4721">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{loginInfoList})]]></dataSourceExpression>
+					<returnValue subreportVariable="currentCount" toVariable="getCurrentCount"/>
+					<subreportExpression><![CDATA["template_sub.jasper"]]></subreportExpression>
+				</subreport>
+			</elementGroup>
+			<line>
+				<reportElement x="240" y="20" width="470" height="1" uuid="d9c6cbac-a155-4a5c-9965-f31806ecb67a">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="65" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="0" y="30" width="60" height="30" uuid="5e8ef30b-1455-47ea-a6a9-f0d1c954a21f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["Page   " + $V{PAGE_NUMBER} + "    of    "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="65" y="30" width="20" height="30" uuid="4fc4a21c-9971-49d9-89f8-13c27e633f4f">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="510" y="40" width="200" height="20" uuid="2c123a9d-5af4-4ad2-a976-f9688e6b1580">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ID:" + $R{report.common.id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
