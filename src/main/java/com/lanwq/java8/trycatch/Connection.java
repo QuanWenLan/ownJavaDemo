@@ -1,4 +1,4 @@
-package com.lanwq.trycatch;
+package com.lanwq.java8.trycatch;
 
 /**
  * @author Vin lan

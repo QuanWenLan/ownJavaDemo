@@ -1,4 +1,4 @@
-package com.lanwq.trycatch;
+package com.lanwq.java8.trycatch;
 
 /**
  * @author Vin lan
@@ -10,7 +10,7 @@ package com.lanwq.trycatch;
  **/
 public class TryWithResource {
     /**
-     * 使用这种语法糖之后会出现异常屏蔽的问题，参考例子 {@link com.lanwq.trycatch.TryWithResource2},
+     * 使用这种语法糖之后会出现异常屏蔽的问题，参考例子 {@link com.lanwq.java8.trycatch.TryWithResource2},
      * 使用这种语法要注意 资源泄露问题，也就是要关注对应的 close() 方法的具体实现。
      */
     public static void main(String[] args) {
