@@ -16,6 +16,7 @@
     <modules>
         <module>networkprogramming</module>
         <module>ThreadDemo</module>
+        <module>JasperReports</module>
     </modules>
 
     <properties>
