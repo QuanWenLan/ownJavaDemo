@@ -1,4 +1,4 @@
-package com.lanwq.thinkinginjavademo.classriit;
+package com.lanwq.thinkinginjavademo.classrtti;
 
 import java.util.Random;
 
@@ -39,7 +39,7 @@ public class ClassInitialization {
         // does trigger initialization
         System.out.println(Initable2.staticNonFinal);
         // does trigger initialization,立即进行了初始化
-        Class initable3 = Class.forName("com.lanwq.thinkinginjavademo.classriit.Initable3");
+        Class initable3 = Class.forName("com.lanwq.thinkinginjavademo.classrtti.Initable3");
         System.out.println("After creating Initable3 ref");
         System.out.println(Initable3.staticNonFinal);
     }

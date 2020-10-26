@@ -36,7 +36,7 @@ public class LambdaDemo {
     }
 
     /**
-     * 1:替代匿名内部类
+     * 1:替代匿名内
      */
     public static void replaceAnonymousInnerClass() {
         /**

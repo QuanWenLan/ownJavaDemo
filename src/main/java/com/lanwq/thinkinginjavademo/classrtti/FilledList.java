@@ -1,4 +1,4 @@
-package com.lanwq.thinkinginjavademo.classriit;
+package com.lanwq.thinkinginjavademo.classrtti;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.lanwq.thinkinginjavademo.classriit;
+package com.lanwq.thinkinginjavademo.classrtti;
 
 /**
  * @program: javaDemo->ToyTest
@@ -17,7 +17,7 @@ public class ToyTest {
         Class c = null;
         try {
             // 类的全限定名，创建一个对象
-            c = Class.forName("com.lanwq.thinkinginjavademo.classriit.FancyToy");
+            c = Class.forName("com.lanwq.thinkinginjavademo.classrtti.FancyToy");
         } catch (ClassNotFoundException e) {
             System.out.println("");
             System.exit(1);

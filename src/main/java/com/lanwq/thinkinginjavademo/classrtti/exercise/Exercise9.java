@@ -1,4 +1,4 @@
-package com.lanwq.thinkinginjavademo.classriit.exercise;
+package com.lanwq.thinkinginjavademo.classrtti.exercise;
 
 /**
  * @program: javaDemo->Exercise9

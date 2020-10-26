@@ -28,6 +28,7 @@
         <netty.all.version>4.1.42.Final</netty.all.version>
         <javax.servlet.api.version>4.0.1</javax.servlet.api.version>
         <org.springframework.version>5.2.4.RELEASE</org.springframework.version>
+        <joda-time.version>2.3</joda-time.version>
     </properties>
 
     <dependencies>
@@ -159,6 +160,12 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
         </dependency>
     </dependencies>
 
