@@ -35,6 +35,7 @@ public class Test {
         // 创建一个数值格式化对象
 
         NumberFormat numberFormat = NumberFormat.getInstance();
+        numberFormat = NumberFormat.getNumberInstance();
 
         // 设置精确到小数点后2位
 
@@ -48,6 +49,7 @@ public class Test {
         try {
             Number parse = numberFormat.parse(numberFormat.format((18.74 - 18.06) / 18.74 * 100));
             System.out.println("num1和num2的百分比为:" + (double)parse + "%");
+            System.out.println(Double.parseDouble(18.12 / 0.01 * 100 + ""));
         } catch (ParseException e) {
             e.printStackTrace();
         }
