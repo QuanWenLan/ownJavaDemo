@@ -1,6 +1,9 @@
 package com.lanwq.java8.timeprocess;
 
-import java.time.LocalDate;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author Vin lan
@@ -23,6 +26,25 @@ public class LocalDateTest {
         testDateOperator();
         System.out.println("=========================");
         testDateInterval();
+        Date date = new Date();
+        LocalDateTime localDateTime1 = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+        System.out.println(localDateTime1);
+        System.out.println(localDateTime1.toLocalDate());
+        // 计算两个日期之间相差的天数 https://blog.csdn.net/zls_1029/article/details/82930583?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1.control
+        Date date1 = new Date(199, 11, 31);
+        Calendar instance = Calendar.getInstance();
+        instance.setTime(date1);
+        LocalDate of = LocalDate.of(instance.get(Calendar.YEAR), instance.get(Calendar.MONTH) + 1, instance.get(Calendar.DAY_OF_MONTH));
+        System.out.println("of:::" + of.toString());
+        LocalDate of2 = LocalDate.of(instance.get(Calendar.YEAR), instance.get(Calendar.MONTH), 21);
+        System.out.println("of:::" + of2.toString());
+        System.out.println(of.toEpochDay() - of2.toEpochDay());
+        System.out.println(of.until(of2, ChronoUnit.DAYS));
+
+        String a = "HS-BC00120|Hair Rescue Thickening Treatment, Anti-Dandruff Shampoo";
+        String[] split = a.split("\\|");
+        System.out.println(split[0]);
+        System.out.println(split[1]);
     }
 
     public static void testGetNow() {

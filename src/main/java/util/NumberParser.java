@@ -10,9 +10,11 @@ package util;
 public class NumberParser {
 
     public static void main(String[] args) {
-        System.out.println(NumberParser.parse("0.0"));
+        /*System.out.println(NumberParser.parse("0.0"));
         System.out.println(NumberParser.parse("5.0"));
-        System.out.println(NumberParser.parse("1234567.023"));
+        System.out.println(NumberParser.parse("1234567.023"));*/
+        System.out.println(Double.parseDouble("0"));
+        System.out.println(0.0 == 0.0);
     }
     //10以内的数字
     private static final String[] SINGLE_NUM_ARR = new String[] { "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine" };
