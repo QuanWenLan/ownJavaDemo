@@ -240,8 +240,11 @@ public class GetSFAddressTest {
                 String pickupType = "";
                 for (Element content : allChildrenElements) {
                     if (Objects.equals("p", content.tagName()) && content.children().size() == 0) {
-                        pickupType = content.text();
+                        if (!"".equals(content.text())) {
+                            pickupType = content.text();
+                        }
                     } else {
+                        System.out.println(pickupType);
                         Element a = content.children().first();
                         if (a.hasAttr("href")) {
                             String href = a.attr("href");
@@ -249,8 +252,8 @@ public class GetSFAddressTest {
                             if("http".equals(href.substring(0, hrefSB.indexOf(":")))) {
                                 hrefSB.insert(hrefSB.indexOf(":"), "s");
                             }
-                            System.out.println(hrefSB);
-                            URL pdfUrl = new URL(hrefSB.toString());
+                            System.out.println("内容 " + a.text() + " 连接 " + hrefSB);
+                            /*URL pdfUrl = new URL(hrefSB.toString());
                             PdfReader reader = new PdfReader(pdfUrl);
                             StringBuffer buff = new StringBuffer();
                             PdfReaderContentParser parser = new PdfReaderContentParser(reader);
@@ -260,9 +263,8 @@ public class GetSFAddressTest {
                                 strategy = parser.processContent(i, new LocationTextExtractionStrategy());
                                 buff.append(strategy.getResultantText());
                             }
-                            System.out.println(buff);
+                            System.out.println(buff);*/
                         }
-                        System.out.println(pickupType);
                     }
                 }
             }

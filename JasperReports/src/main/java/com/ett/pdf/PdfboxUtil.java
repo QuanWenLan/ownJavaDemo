@@ -20,27 +20,17 @@ public class PdfboxUtil {
     /**
      * @param args
      */
-
     public static void main(String[] args) {
-        String pdfPath = "D:\\7-11_HK_TC.pdf";
-
-        String txtfilePath = "D:\\7-11_HK_TC-pdf.txt";
-
+        String pdfPath = "D:\\OK_HK_TC.pdf";
+        String txtfilePath = "D:\\OK_HK_TC.txt";
         PdfboxUtil pdfutil = new PdfboxUtil();
-
         try {
             String content = pdfutil.getTextFromPdf(pdfPath);
-
             pdfutil.toTextFile(content, txtfilePath);
-
             System.out.println("Finished !");
-
         } catch (Exception e) {
             e.printStackTrace();
-
         }
-
-
     }
 
 
@@ -54,68 +44,41 @@ public class PdfboxUtil {
     public String getTextFromPdf(String pdfPath) throws Exception {
         // 是否排序
 
-        boolean sort = false;
-
+        boolean sort = true;
         // 开始提取页数
         int startPage = 1;
         // 结束提取页数
         int endPage = Integer.MAX_VALUE;
-
         String content = null;
-
         InputStream input = null;
-
         File pdfFile = new File(pdfPath);
-
         PDDocument document = null;
-
         try {
             input = new FileInputStream(pdfFile);
-
             // 加载 pdf 文档
-
             PDFParser parser = new PDFParser(new RandomAccessFile(pdfFile,"rw"));
-
             parser.parse();
-
             document = parser.getPDDocument();
-
-            // 获取内容信息
-
+            //获取内容信息
             PDFTextStripper pts = new PDFTextStripper();
-
             pts.setSortByPosition(sort);
-
             endPage = document.getNumberOfPages();
-
             System.out.println("Total Page: " + endPage);
-
             pts.setStartPage(startPage);
-
             pts.setEndPage(endPage);
-
             try {
                 content = pts.getText(document);
-
             } catch (Exception e) {
                 throw e;
-
             }
-
             System.out.println("Get PDF Content ...");
-
         } catch (Exception e) {
             throw e;
-
         } finally {
             if (null != input)
-
                 input.close();
-
             if (null != document)
-
                 document.close();
-
         }
 
 
