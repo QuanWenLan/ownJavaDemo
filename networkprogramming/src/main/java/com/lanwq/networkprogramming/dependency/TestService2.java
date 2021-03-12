@@ -14,9 +14,9 @@ public class TestService2 {
 //    @Autowired
     private TestService1 testService1;   // 属性注入
 
-    @Autowired
+//    @Autowired
     public TestService2(TestService1 testService1) {   // 构造注入
-        System.out.println("构造注入 testService1");
+        System.out.println("TestService2 构造注入 testService1");
         this.testService1 = testService1;
     }
 
@@ -24,7 +24,7 @@ public class TestService2 {
         System.out.println("空构造方法 TestService2");
     }
 
-//    @Autowired
+    @Autowired
     public void setTestService1(TestService1 testService1) { // setter 注入
         System.out.println("setTestService1 方法");
         this.testService1 = testService1;

@@ -1,4 +1,4 @@
-package com.lanwq.java8;
+package com.lanwq.java8.lambda;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

@@ -19,16 +19,15 @@ public class MainConfig {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
 
-        TestService1 testService1 = (TestService1) context.getBean("testService1");
-        String[] names = context.getBeanDefinitionNames();
-        for (String name : names) {
-            System.out.println(name);
-        }
+//        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
+//        context.start();
 
-        /*ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
-        context.start();*/
+        TestService1 testService1 = (TestService1) context.getBean("testService1");
+        TestService2 testService2 = (TestService2) context.getBean("testService2");
+        System.out.println(testService1);
+        System.out.println(testService2);
     }
-    /** https://juejin.cn/post/6859189194837721102 参考
+    /** https://juejin.cn/post/6859189194837721102 参考,这个也可以参考：https://mp.weixin.qq.com/s/VpCt49_Li35caK5IaQTuNg
      * 1. 属性注入不会报错，会先调用 空的构造方法
      * 2. setter注入不会报错，会先调用 空的构造方法
      * 3. 采用构造器注入，报错，出现循环依赖

@@ -24,10 +24,11 @@ public class InterfaceViolation {
      机会，使得他们的代码与你的代码耦合成都超过你的期望。也许你认为interface关键字正在保护你，实际上并没有。
      查看类{@link com.lanwq.thinkinginjavademo.classrtti.packageaccess.HiddenC }*/
     if(a instanceof B) {
-
+      System.out.println("a instanceof B :" + true);
       B b = (B)a;
       b.g();
     }
+    System.out.println("a instanceof A :" + (a instanceof A));
   }
 } /* Output:
 B

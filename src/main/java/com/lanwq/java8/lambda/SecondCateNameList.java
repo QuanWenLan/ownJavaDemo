@@ -1,4 +1,4 @@
-package com.lanwq.java8;
+package com.lanwq.java8.lambda;
 
 import com.sun.deploy.util.StringUtils;
 
