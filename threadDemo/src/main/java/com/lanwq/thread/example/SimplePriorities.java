@@ -26,7 +26,7 @@ public class SimplePriorities implements Runnable {
             for (int i = 0; i < 100000; i++) {
                 d += (Math.PI + Math.E) / (double)i;
                 if (i % 1000 == 0)
-                    Thread.yield();
+                    Thread.yield(); // 注释掉if语句，查看输出
             }
             System.out.println(this);
             if (--countDown == 0) return;

@@ -1,5 +1,6 @@
 package com.lanwq.thinkinginjavademo.stringexercise;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -12,13 +13,14 @@ import java.util.stream.Stream;
  **/
 public class StringFormatDemo {
     public static void main(String[] args) {
-        commonStringFormat();
+/*        commonStringFormat();
         System.out.printf("===============%n");
         otherUsage();
         System.out.printf("===============%n");
         formatWithSymbol();
         System.out.printf("===============%n");
-        formatWithTime();
+        formatWithTime();*/
+        System.out.printf("%tY%010d", LocalDate.now(), 568);
     }
 
     /**

@@ -41,10 +41,39 @@ public class LocalDateTest {
         System.out.println(of.toEpochDay() - of2.toEpochDay());
         System.out.println(of.until(of2, ChronoUnit.DAYS));
 
-        String a = "HS-BC00120|Hair Rescue Thickening Treatment, Anti-Dandruff Shampoo";
-        String[] split = a.split("\\|");
-        System.out.println(split[0]);
-        System.out.println(split[1]);
+        testConvertDateToLocalDate();
+        testConvertLocalDateToDate();
+    }
+
+    private static void testConvertDateToLocalDate() {
+        System.out.println("Date to LocalDate");
+        /**
+         * 1）将java.util.Date转换为ZonedDateTime。
+         * 2）使用它的toLocalDate（）方法从ZonedDateTime获取LocalDate。
+         */
+        Date date = new Date();
+        Instant instant = date.toInstant();
+        ZoneId zoneId = ZoneId.systemDefault();
+
+        // atZone()方法返回在指定时区从此Instant生成的ZonedDateTime。
+        LocalDate localDate = instant.atZone(zoneId).toLocalDate();
+        System.out.println("Date = " + date);
+        System.out.println("LocalDate = " + localDate);
+    }
+
+    private static void testConvertLocalDateToDate() {
+        /**
+         * 1）使用ZonedDateTime将LocalDate转换为Instant。
+         * 2）使用from（）方法从Instant对象获取Date的实例
+         */
+        ZoneId zoneId = ZoneId.systemDefault();
+        LocalDate localDate = LocalDate.now();
+        ZonedDateTime zdt = localDate.atStartOfDay(zoneId);
+
+        Date date = Date.from(zdt.toInstant());
+
+        System.out.println("LocalDate = " + localDate);
+        System.out.println("Date = " + date);
     }
 
     public static void testGetNow() {

@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author Vin lan
  * @className VolatileTest
- * @description TODO
+ * @description TODO https://blog.csdn.net/Abysscarry/article/details/84576677 https://www.zhihu.com/question/59297272/answer/194020350
  * @createTime 2021-03-09  14:55
  **/
 public class VolatileTest {
@@ -28,23 +28,24 @@ public class VolatileTest {
                     for (int j = 0; j < 10000; j++) {
                         increase();
                     }
+//                    System.out.println(Thread.currentThread().getName() + " 做了10000次increase()操作");
                     count.incrementAndGet();
                 }
             });
             threads[i].start();
         }
-
-       /* // 等待所有累加线程结束
-        while (Thread.activeCount() > 1)
+        // 等待所有累加线程结束
+        while (Thread.activeCount() > 1) {
             Thread.yield();
-        System.out.println(race);*/
+        }
+        System.out.println(race);
 
-        while (true) {
+        /*while (true) {
             if(count.get() > 19)  {
                 System.out.println(count);
                 System.out.println(race);
                 break;
             }
-        }
+        }*/
     }
 }
