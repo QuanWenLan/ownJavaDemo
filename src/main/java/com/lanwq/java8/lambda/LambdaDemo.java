@@ -14,24 +14,25 @@ import java.util.stream.Collectors;
  **/
 public class LambdaDemo {
     public static void main(String[] args) {
-        /*replaceAnonymousInnerClass();
-        System.out.println("=============");
+        System.out.println("======replaceAnonymousInnerClass=======");
+        replaceAnonymousInnerClass();
+        System.out.println("======traversalCollection=======");
         traversalCollection();
-        System.out.println("=============");
+        System.out.println("======filterWithLambda=======");
         filterWithLambda();
-        System.out.println("=============");
+        System.out.println("======filterWithMultiplyPredicate=======");
         filterWithMultiplyPredicate();
-        System.out.println("=============");*/
+        System.out.println("======limitWithLambda=======");
         limitWithLambda();
-        System.out.println("=============");
+        System.out.println("======lambdaWithSorted=======");
         lambdaWithSorted();
-        System.out.println("=============");
+        System.out.println("======maxAndMin=======");
         maxAndMin();
-        System.out.println("=============");
+        System.out.println("======mapWithLambda=======");
         mapWithLambda();
-        System.out.println("=============");
+        System.out.println("======reduceWithLambda=======");
         reduceWithLambda();
-        System.out.println("=============");
+        System.out.println("======collectionWithLambda=======");
         collectionWithLambda();
     }
 
