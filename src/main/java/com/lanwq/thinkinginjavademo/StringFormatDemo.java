@@ -1,4 +1,4 @@
-package com.lanwq.thinkinginjavademo.stringexercise;
+package com.lanwq.thinkinginjavademo;
 
 import java.time.LocalDate;
 import java.util.Date;
