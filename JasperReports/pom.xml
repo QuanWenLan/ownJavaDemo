@@ -22,7 +22,7 @@
         <hibernate.version>5.4.18.Final</hibernate.version>
         <junit.version>5.6.1</junit.version>
         <guava.version>14.0.1</guava.version>
-        <commons-io.version>2.5</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
     </properties>
 
     <dependencies>
