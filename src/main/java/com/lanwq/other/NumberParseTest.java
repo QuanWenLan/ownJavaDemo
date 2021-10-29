@@ -1,4 +1,4 @@
-package com.lanwq;
+package com.lanwq.other;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

@@ -48,7 +48,7 @@ public class LocalDateTest {
     private static void testConvertDateToLocalDate() {
         System.out.println("Date to LocalDate");
         /**
-         * 1）将java.util.Date转换为ZonedDateTime。
+         * 1）将java.com.lanwq.other.util.Date转换为ZonedDateTime。
          * 2）使用它的toLocalDate（）方法从ZonedDateTime获取LocalDate。
          */
         Date date = new Date();

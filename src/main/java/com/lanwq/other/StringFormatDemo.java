@@ -1,4 +1,4 @@
-package com.lanwq.thinkinginjavademo;
+package com.lanwq.other;
 
 import java.time.LocalDate;
 import java.util.Date;

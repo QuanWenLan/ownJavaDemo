@@ -1,4 +1,4 @@
-//: net/mindview/util/TwoTuple.java
+//: net/mindview/com.lanwq.other.util/TwoTuple.java
 package com.lanwq.thinkinginjavademo.fifteenthgenerics;
 
 

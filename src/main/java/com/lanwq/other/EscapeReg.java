@@ -1,4 +1,4 @@
-package com.lanwq.thinkinginjavademo;
+package com.lanwq.other;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

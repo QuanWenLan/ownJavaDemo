@@ -1,4 +1,4 @@
-package com.lanwq.thinkinginjavademo.bigdecimallean;
+package com.lanwq.thinkinginjavademo.bigdecimallearn;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

@@ -1,13 +1,13 @@
-package util;
+package com.lanwq.other;
 
 /**
  * @author Vin lan
- * @className NumberParser
- * @description TODO
+ * @className DigitalNumberConvertToEnglishNumber
+ * @description TODO 数字金额转化为英文金额
  * @createTime 2020-11-16  10:49
  * 源代码：@see<a href="http://blog.csdn.net/l1028386804/article/details/52599090">http://blog.csdn.net/l1028386804/article/details/52599090</a>
  **/
-public class NumberParser {
+public class DigitalNumberConvertToEnglishNumber {
 
     public static void main(String[] args) {
         /*System.out.println(NumberParser.parse("0.0"));
@@ -16,15 +16,16 @@ public class NumberParser {
         System.out.println(Double.parseDouble("0"));
         System.out.println(0.0 == 0.0);
     }
+
     //10以内的数字
-    private static final String[] SINGLE_NUM_ARR = new String[] { "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine" };
+    private static final String[] SINGLE_NUM_ARR = new String[]{"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
     //十几的数字
-    private static final String[] TEN_NUM_ARR = new String[] { "Ten", "Eleven", "Tweleve", "Thirteen", "Fourteen", "Fifteen", "Sixteen","Seventeen", "Eighteen", "Nineteen" };
+    private static final String[] TEN_NUM_ARR = new String[]{"Ten", "Eleven", "Tweleve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
     //整十的数字
-    private static final String[] TEN_INTEGER_ARR = new String[] { "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+    private static final String[] TEN_INTEGER_ARR = new String[]{"Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
 
     public static String parse(String x) {
-        if(Double.parseDouble(x) <= 0){
+        if (Double.parseDouble(x) <= 0) {
             return "Zero Cents only";
         }
         int z = x.indexOf("."); // 取小数点位置
@@ -60,11 +61,11 @@ public class NumberParser {
         }
 
         String xs = ""; // 用来存放转换後小数部分
-        if (z > -1){
-            String transTwo =  transTwo(rstr);
-            if(transTwo == null || "".equals(transTwo)){
+        if (z > -1) {
+            String transTwo = transTwo(rstr);
+            if (transTwo == null || "".equals(transTwo)) {
                 xs = "";
-            }else{
+            } else {
                 xs = "and " + transTwo + " Cents "; // 小数部分存在时转换小数
             }
         }
@@ -107,7 +108,7 @@ public class NumberParser {
     }
 
     private static String parseMore(String s) {
-        String[] a = new String[] { "", "Thousand", "Million", "Billion" };
+        String[] a = new String[]{"", "Thousand", "Million", "Billion"};
         return a[Integer.parseInt(s)];
     }
 
