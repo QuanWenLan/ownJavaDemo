@@ -11,7 +11,7 @@
 	</queryString>
 	<field name="stuNo" class="java.lang.Integer"/>
 	<field name="stuName" class="java.lang.String"/>
-	<field name="subjectList" class="java.util.List"/>
+	<field name="subjectList" class="java.com.lanwq.other.util.List"/>
 	<variable name="getAverageScore" class="java.lang.Double" incrementType="Report"/>
 	<group name="Group1">
 		<groupExpression><![CDATA[$F{stuNo}]]></groupExpression>
