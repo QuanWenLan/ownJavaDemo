@@ -13,7 +13,7 @@ public class MutexEvenGenerator extends IntGenerator {
     private int currentEvenValue = 0;
     private Lock lock = new ReentrantLock();
     /**
-     * 定义在java.util.concurrent.locks.Lock中的显示的互斥机制。使用显示的Lock对象，Lock对象必须被显示的创建、锁定和释放
+     * 定义在java.com.lanwq.other.util.concurrent.locks.Lock中的显示的互斥机制。使用显示的Lock对象，Lock对象必须被显示的创建、锁定和释放
      * 第一个进入next()的任务将会获得锁，任何其他视图获取锁的任务都将从其开设尝试之时被阻塞，直至第一个任务释放锁。
      */
     @Override

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="springtest.property.User">
+        <property name="date" value="2021-08-25"/>
+    </bean>
+
+<!--    1 配置自定义的属性编辑器-->
+    <!--<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="java.util.Date" value="springtest.property.DatePropertyEditor"/>
+            </map>
+        </property>
+    </bean>-->
+
+<!--    2 注册 spring  自带的属性编辑器 -->
+<!--    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="propertyEditorRegistrars">
+            <list>
+                <bean class="springtest.property.DatePropertyEditorRegistrar"/>
+            </list>
+        </property>
+    </bean>-->
+
+<!--    3 使用 Converter 的方式-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="springtest.property.String2DateConverter"/>
+            </list>
+        </property>
+    </bean>
+</beans>

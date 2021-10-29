@@ -23,7 +23,7 @@ public class ProducerConsumer {
     private static final int CAPACITY = 5;
     private static int i = 0;
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Queue<Integer> queue = new LinkedList<Integer>();
 
         Thread producer1 = new Producer("P-1", queue, CAPACITY);
