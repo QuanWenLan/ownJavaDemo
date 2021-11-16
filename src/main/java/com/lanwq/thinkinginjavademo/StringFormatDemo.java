@@ -21,6 +21,7 @@ public class StringFormatDemo {
         System.out.printf("===============%n");
         formatWithTime();*/
         System.out.printf("%tY%010d", LocalDate.now(), 568);
+        // 修改
     }
 
     /**
