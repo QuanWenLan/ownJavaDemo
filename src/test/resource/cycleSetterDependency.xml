@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    setter 循环依赖 -->
+    <bean id="testSetterA" class="springtest.cycle.dependency.TestSetterA">
+        <property name="setterB" ref="testSetterB"/>
+    </bean>
+    <bean id="testSetterB" class="springtest.cycle.dependency.TestSetterB">
+        <property name="setterC" ref="testSetterC"/>
+    </bean>
+    <bean id="testSetterC" class="springtest.cycle.dependency.TestSetterC">
+        <property name="setterA" ref="testSetterA"/>
+    </bean>
+</beans>

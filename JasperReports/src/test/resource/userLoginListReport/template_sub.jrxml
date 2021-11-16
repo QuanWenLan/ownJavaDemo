@@ -5,7 +5,7 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="lastLoginTime" class="java.util.Date"/>
+	<field name="lastLoginTime" class="java.com.lanwq.other.util.Date"/>
 	<field name="IPAddress" class="java.lang.String"/>
 	<field name="stationId" class="java.lang.String"/>
 	<variable name="currentCount" class="java.lang.Integer" calculation="Count"/>

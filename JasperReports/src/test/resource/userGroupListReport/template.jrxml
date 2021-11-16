@@ -13,7 +13,7 @@
 	<field name="roleDesc" class="java.lang.String"/>
 	<field name="userId" class="java.lang.String"/>
 	<field name="userName" class="java.lang.String"/>
-	<field name="lastUpdateTime" class="java.util.Date"/>
+	<field name="lastUpdateTime" class="java.com.lanwq.other.util.Date"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -42,7 +42,7 @@
 			<textField isBlankWhenNull="true">
 				<reportElement x="519" y="23" width="140" height="30" uuid="ae52889d-9199-4bbc-ab32-e157e008a1c0"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd-MMM-yyyy HH:mm:ss", java.util.Locale.ENGLISH).format(new java.util.Date())]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd-MMM-yyyy HH:mm:ss", java.com.lanwq.other.util.Locale.ENGLISH).format(new java.com.lanwq.other.util.Date())]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="280" y="56" width="380" height="23" uuid="7dc542c8-4dce-4285-bdef-2981c54f5572"/>

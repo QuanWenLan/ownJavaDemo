@@ -2,6 +2,9 @@ package com.lanwq.java8.timeprocess;
 
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.TimeZone;
 
 /**
@@ -57,6 +60,16 @@ public class TimeZoneTest {
         int gmt = offset / (3600 * 1000);
         System.out.printf("id=%s, name=%s, offset=%s(ms), gmt=%s\n",
                 id, displayName, offset, gmt);
+    }
+
+    @Test
+    public void test1() throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        Date parse = simpleDateFormat.parse("20110325000000");
+        System.out.println(parse.toString());
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyyMMdd");
+        Date parse2 = simpleDateFormat2.parse("20110325000000");
+        System.out.println(parse2);
     }
 }
 /*

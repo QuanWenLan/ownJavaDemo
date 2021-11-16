@@ -15,7 +15,7 @@
 	<field name="stuName" class="java.lang.String">
 		<fieldDescription><![CDATA[学号]]></fieldDescription>
 	</field>
-	<field name="subjectList" class="java.util.List"/>
+	<field name="subjectList" class="java.com.lanwq.other.util.List"/>
 	<variable name="getAverageScore" class="java.lang.Double" incrementType="Report"/>
 	<group name="Group1">
 		<groupExpression><![CDATA[$F{stuNo}]]></groupExpression>
