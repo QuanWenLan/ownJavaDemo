@@ -137,5 +137,19 @@ public class MainTest {
         }
     }
 
+    /**
+     * 事务源码分析，测试
+     */
+    @Test
+    public void testTx() throws Exception {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:testTx.xml");
+        springtest.tx.UserService userService = (springtest.tx.UserService) context.getBean("userService");
+        springtest.tx.User user = new springtest.tx.User();
+        user.setEmail("1111@163.com");
+        user.setName("zhang san");
+        user.setUserId(2);
+        userService.save(user);
+    }
+
 
 }
