@@ -176,16 +176,18 @@
             <version>1.8.16</version>
         </dependency>
 
-        <!--<dependency>
+        <!--
+        <dependency>
                    <groupId>e-iceblue</groupId>
                    <artifactId>spire.pdf</artifactId>
                    <version>3.11.6</version>
-               </dependency>-->
+               </dependency>
         <dependency>
             <groupId>e-iceblue</groupId>
             <artifactId>spire.pdf.free</artifactId>
             <version>3.9.0</version>
         </dependency>
+        -->
 
         <dependency>
             <groupId>com.itextpdf</groupId>
@@ -229,6 +231,12 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>com.e-iceblue</id>
+            <url>http://repo.e-iceblue.cn/repository/maven-public/</url>
+        </repository>
+    </repositories>
 
     <build>
         <finalName>javaThinkingDemo</finalName>

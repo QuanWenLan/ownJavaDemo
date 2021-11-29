@@ -35,5 +35,11 @@ public class StreamDemo {
         } catch (Exception e) {
 
         }
+        stream2.forEach(str -> System.out.println(str));
+    }
+
+    public static void test2() {
+        // 第二种 数值
+        final Stream<String> stream1 = Stream.of("a", "b", "c");
     }
 }

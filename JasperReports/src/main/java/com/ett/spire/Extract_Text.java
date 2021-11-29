@@ -1,7 +1,7 @@
 package com.ett.spire;
 
-import com.spire.pdf.PdfDocument;
-import com.spire.pdf.PdfPageBase;
+/*import com.spire.pdf.PdfDocument;
+import com.spire.pdf.PdfPageBase;*/
 
 import java.io.*;
 
@@ -9,7 +9,7 @@ public class Extract_Text {
 
     public static void main(String[] args) {
 
-        //创建PdfDocument实例
+        /*//创建PdfDocument实例
         PdfDocument doc = new PdfDocument();
         //加载PDF文件
         doc.loadFromFile("D:\\7-11_HK_TC.pdf");
@@ -35,6 +35,6 @@ public class Extract_Text {
 
         doc.close();
 
-        System.out.println("\\");
+        System.out.println("\\");*/
     }
 }
