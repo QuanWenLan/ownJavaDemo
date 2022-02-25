@@ -1,4 +1,4 @@
-package com.lanwq.thinkinginjavademo.initializationcleanup;
+package com.lanwq.thinkinginjavademo.fifthinitializationcleanup;
 
 import java.math.BigDecimal;
 
