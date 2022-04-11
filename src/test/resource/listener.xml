@@ -4,4 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="testListener" class="springtest.listener.TestListener"/>
+    <bean id="orderListener" class="springtest.listener.OrderListener"/>
+    <bean id="goodsListener" class="springtest.listener.GoodsListener"/>
+    <bean id="redPacketListener" class="springtest.listener.RedPacketListener"/>
 </beans>

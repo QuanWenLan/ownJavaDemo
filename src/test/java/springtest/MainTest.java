@@ -12,6 +12,7 @@ import springtest.aop.UserService;
 import springtest.aop.UserServiceImpl;
 import springtest.aware.TestAware;
 import springtest.beanpostprocessor.MyInstantiationAwareBeanPostProcessor;
+import springtest.listener.OrderEvent;
 import springtest.listener.TestEvent;
 import springtest.lookup.bean.GetBeanTest;
 import springtest.property.User;
@@ -94,6 +95,18 @@ public class MainTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:listener.xml");
         TestEvent event = new TestEvent("hello", "msg");
         context.publishEvent(event);
+        for (int i = 0; i < 5; i++) {
+            String orderCode = "test_order_" + i;
+            String goodsCode = "test_order_" + i;
+            String redPacketCode = null;
+            if (i % 2 == 0) {
+                //偶数时使用红包
+                redPacketCode = "test_order_" + i;
+            }
+            OrderEvent orderEvent = new OrderEvent(context, orderCode, goodsCode, redPacketCode);
+            /** 3. ApplicationContext实现了ApplicationEventPublisher接口,所以可以直接通过ApplicationContext来发送事件*/
+            context.publishEvent(orderEvent);
+        }
     }
 
     // 测试AOP

@@ -4,6 +4,11 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 /**
@@ -91,5 +96,29 @@ public class Testttt {
         list.add(10);
         list.add(11);
 
+    }
+
+    @Test
+    public void test5() {
+        LocalDateTime beforeTime = LocalDateTime.of(2022, 6, 30, 11, 30, 20);
+        System.out.println(beforeTime);
+        LocalDateTime nowTime = LocalDateTime.now();
+        System.out.println(nowTime);
+        long until = nowTime.until(beforeTime, ChronoUnit.DAYS);
+        System.out.println(until);
+        long until2 = beforeTime.until(nowTime, ChronoUnit.DAYS);
+        System.out.println(until2);
+        long between = ChronoUnit.DAYS.between(beforeTime, nowTime);
+        System.out.println(between);
+        System.out.println(Math.abs(between));
+        Date date = new Date(121, 10, 1);
+        System.out.println(date);
+
+        try {
+            String encode = URLEncoder.encode("/#!/link/transactionDetail/SO20221000000031", "utf-8");
+            System.out.println(encode);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 }
