@@ -5,6 +5,7 @@
 
     <bean id="user" class="springtest.property.User">
         <property name="date" value="2021-08-25"/>
+        <property name="num" value="1"/>
     </bean>
 
 <!--    1 配置自定义的属性编辑器-->

@@ -1,5 +1,6 @@
 package springtest.aop;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 
@@ -19,13 +20,29 @@ import org.aspectj.lang.annotation.*;
  **/
 @Aspect
 public class AspectJTest {
+
+    /**
+     * joinPoint（连接点、切入点）：表示可以将横切的逻辑织入的地方，比如方法调用、方法执行、属性设置等。
+     *
+     * Pointcut 通过表达式定义的一组joinPoint的集合，比如定义一个pointCut为"com.lucky.test包下的所有Service中的add方法"，
+     * 这样就可以定义哪些具体的joinPoint需要织入横切逻辑.
+     *
+     * Advice（增强）：横切的具体逻辑，比如日志打印，权限校验等这些系统需求就需要在业务代码上增强功能，这些具体的横切逻辑就叫做Advice
+     *
+     * aspect（切面）：切点和增强组合一起就叫做切面，一个切面就定义了在哪些连接点需要织入什么横切逻辑
+     *
+     * target（目标）：需要织入切面的具体目标对象，比如在UserService类的addUser方法前面织入打印日志逻辑，那么UserService这个类就是目标对象
+     *
+     * weaving（织入）：将横切逻辑添加到目标对象的过程叫做织入
+     * 总结：在target的joinPoint处weaving一个或多个以Advice和pointCut组成的
+     */
     @Pointcut("execution(* springtest.aop..*.test(..))")
     public void test() {
-        System.out.println("AspectJTest test");
+
     }
 
     @Before("test()")
-    public void beforeTest() {
+    public void beforeTest(JoinPoint joinPoint) {
         System.out.println("beforeTest");
     }
 

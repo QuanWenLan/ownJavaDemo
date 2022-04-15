@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <aop:aspectj-autoproxy/>
-    <bean id="test" class="springtest.aop.TestBean"/>
+    <bean id="test" class="springtest.aop.TestBean" factory-method="createInstance"/>
     <bean class="springtest.aop.AspectJTest"/>
-    <context:load-time-weaver/>
+<!--    <context:load-time-weaver/>-->
 </beans>

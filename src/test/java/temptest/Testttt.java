@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.time.LocalDate;
@@ -120,5 +121,8 @@ public class Testttt {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
+        File file = new File("D:/projects/ownJavaDemo/target/javaThinkingDemo/WEB-INF/classes/springmvc.xml");
+        System.out.println(file.exists());
     }
 }

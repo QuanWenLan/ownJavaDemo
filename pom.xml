@@ -6,8 +6,10 @@
 
     <groupId>com.lanwq</groupId>
     <artifactId>javaThinkingDemo</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+<!--    识别不到 resources 下文件,把这打包方式注释掉 https://blog.csdn.net/weixin_43409994/article/details/118157694 -->
+<!--    <packaging>pom</packaging>-->
 
     <name>javaDemo Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
@@ -17,6 +19,7 @@
         <module>networkprogramming</module>
         <module>ThreadDemo</module>
         <module>JasperReports</module>
+        <module>mvctest</module>
     </modules>
 
     <properties>
@@ -213,17 +216,17 @@
 
         <!--    ActiveMQ    -->
         <!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-all -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-all</artifactId>
             <version>5.16.3</version>
-        </dependency>
+        </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-spring -->
-<!--        <dependency>
+        <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-spring</artifactId>
             <version>5.16.3</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jms</artifactId>
@@ -257,6 +260,25 @@
             <artifactId>shiro-core</artifactId>
             <version>1.4.0</version>
         </dependency>
+<!--        spring mvc 文件上传功能-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io commons-fileupload 已经依赖了这个了-->
+        <!--<dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.2</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>

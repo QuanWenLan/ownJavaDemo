@@ -10,6 +10,7 @@ import java.util.Date;
  **/
 public class User {
     private Date date;
+    private long num;
 
     public Date getDate() {
         return date;
@@ -17,6 +18,14 @@ public class User {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public long getNum() {
+        return num;
+    }
+
+    public void setNum(long num) {
+        this.num = num;
     }
 
     @Override

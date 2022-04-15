@@ -6,6 +6,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
+import springtest.annotation.AnnotationTest;
 import springtest.aop.MyInvocationHandler;
 import springtest.aop.TestBean;
 import springtest.aop.UserService;
@@ -114,7 +115,10 @@ public class MainTest {
     public void testAop() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:testAop.xml");
         TestBean testBean = (TestBean) context.getBean("test");
-        testBean.test();
+        testBean.test(new TestBean.Pa());
+        // 这种方式创建出来的不是 代理 对象，而是普通的 new 出来的对象，不会触发 增强方法.上面使用 getBean 方法的才是 spring 创建的代理对象
+        System.out.println("**************");
+        TestBean.createInstance().test(new TestBean.Pa());
     }
 
     // 测试 代理
@@ -165,4 +169,11 @@ public class MainTest {
     }
 
 
+    // 测试注解开发
+    @Test
+    public void testAnnotation() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:testAnnotation.xml");
+        AnnotationTest testBean = (AnnotationTest) context.getBean("annotationTest");
+        testBean.print();
+    }
 }
