@@ -46,6 +46,7 @@ public class DownloadThread implements Callable<Boolean> {
         if (part != null) {
             httpFileName = httpFileName + HttpDownLoadMain.FILE_TEMP_SUFFIX + part;
         }
+        httpFileName = "D:\\download\\" + httpFileName;
 
         // 获取本地的临时文件的大小
         long localFileContentLength = FileUtil.getLocalFileSize(httpFileName);
@@ -57,9 +58,14 @@ public class DownloadThread implements Callable<Boolean> {
         }
 
         // 新的文件要重新下载
-        HttpURLConnection httpUrlConnection = HttpUtil.getHttpUrlConnection(url, startPos + localFileContentLength, endPos);
+        System.out.println("开始获取：" + startPos + " 字节 到 " + endPos + " 字节内容");
+        HttpURLConnection httpUrlConnection = HttpUtil.getHttpUrlConnection(url, startPos, endPos);
+        // 未完成下载的大小
+        int unfinishedSize = httpUrlConnection.getContentLength();
+        System.out.println("获取到的文件大小：" + unfinishedSize);
         // 获取输入流
-        try (InputStream inputStream = httpUrlConnection.getInputStream(); BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+        try (InputStream inputStream = httpUrlConnection.getInputStream();
+             BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
              RandomAccessFile oSavedFile = new RandomAccessFile(httpFileName, "rw")) {
             // 文件写入开始位置 localFileContentLength
             oSavedFile.seek(localFileContentLength);
@@ -71,6 +77,7 @@ public class DownloadThread implements Callable<Boolean> {
                 oSavedFile.write(bytes, 0, len);
                 LogThread.DOWNLOAD_SIZE.addAndGet(len);
             }
+            oSavedFile.close();
         } catch (FileNotFoundException e) {
             System.out.println("\n> ERROR! 要下载的文件路径不存在 " + url);
             return false;
@@ -83,5 +90,14 @@ public class DownloadThread implements Callable<Boolean> {
             LogThread.DOWNLOAD_FINISH.addAndGet(1);
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "DownloadThread{" +
+                "startPos=" + startPos +
+                ", endPos=" + endPos +
+                ", part=" + part +
+                '}';
     }
 }

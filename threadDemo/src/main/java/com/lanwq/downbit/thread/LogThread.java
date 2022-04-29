@@ -28,11 +28,11 @@ public class LogThread implements Callable<Boolean> {
         while (DOWNLOAD_FINISH.get() != HttpDownLoadMain.DOWNLOAD_THREAD_NUM) {
             double downloadSize = DOWNLOAD_SIZE.get();
             // 速度 = 大小/ 时间
-            Double speed = ((downloadSize - size) / 1024d) / 1d;
+            double speed = ((downloadSize - size) / 1024d) / 1d;
             size = downloadSize;
             double surplusTime = (httpFileContentLength - downloadSize) / 1024d / speed;
             Double fileSize = downloadSize / 1024d / 1024d;
-            String speedLog = "> 已经下载大小 " + String.format("%.2f", fileSize) + "mb,当前下载速度:" + speed.intValue() + "kb/s" + ",估计剩余时间:" + String.format("%.1f", surplusTime) + "s";
+            String speedLog = "> 已经下载大小 " + String.format("%.2f", fileSize) + "mb,当前下载速度:" + (int) speed + "kb/s" + ",估计剩余时间:" + String.format("%.1f", surplusTime) + "s";
             for (int i = 0; i < logLength; i++) {
                 System.out.print("\b");
             }

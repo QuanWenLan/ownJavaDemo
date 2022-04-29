@@ -55,7 +55,7 @@ public class HttpUtil {
     public static HttpURLConnection getHttpUrlConnection(String url, long start, Long end) throws IOException {
         HttpURLConnection httpUrlConnection = getHttpUrlConnection(url);
         if (end != null) {
-            httpUrlConnection.setRequestProperty("RANGE", "bytes=" + start + "-" + end + "/*");
+            httpUrlConnection.setRequestProperty("RANGE", "bytes=" + start + "-" + end + "");
         } else {
             httpUrlConnection.setRequestProperty("RANGE", "bytes=" + start + "-");
         }
