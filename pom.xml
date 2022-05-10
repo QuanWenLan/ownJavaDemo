@@ -20,6 +20,7 @@
         <module>ThreadDemo</module>
         <module>JasperReports</module>
         <module>mvctest</module>
+        <module>fcm</module>
     </modules>
 
     <properties>
