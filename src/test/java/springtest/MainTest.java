@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import springtest.annotation.AnnotationTest;
+import springtest.annotation.AutowiredTest;
 import springtest.aop.MyInvocationHandler;
 import springtest.aop.TestBean;
 import springtest.aop.UserService;
@@ -176,4 +177,13 @@ public class MainTest {
         AnnotationTest testBean = (AnnotationTest) context.getBean("annotationTest");
         testBean.print();
     }
+
+    // 测试 Autowired 属性注入源码
+    @Test
+    public void testAutowired() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:testAnnotation.xml");
+        AutowiredTest testBean = (AutowiredTest) context.getBean("autowiredTest");
+        testBean.testPrint2();
+    }
+
 }

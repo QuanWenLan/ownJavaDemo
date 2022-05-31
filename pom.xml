@@ -18,9 +18,7 @@
     <modules>
         <module>networkprogramming</module>
         <module>ThreadDemo</module>
-        <module>JasperReports</module>
         <module>mvctest</module>
-        <module>fcm</module>
     </modules>
 
     <properties>
@@ -283,18 +281,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-        </dependency>
-
-        <!-- FCM -->
-        <dependency>
-            <groupId>com.google.firebase</groupId>
-            <artifactId>firebase-admin</artifactId>
-            <version>8.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.firebase</groupId>
-            <artifactId>firebase-admin</artifactId>
-            <version>8.1.0</version>
         </dependency>
 
         <dependency>
