@@ -1,10 +1,10 @@
-package easy;
+package tags.array;
 
 import java.util.Arrays;
 
 /**
  * @program: javaDemo->RemoveDuplicate
- * @description: 删除有序数组中的重复项 26
+ * @description: 26 删除有序数组中的重复项
  * @author: lanwenquan
  * @date: 2021-07-12 22:44
  */

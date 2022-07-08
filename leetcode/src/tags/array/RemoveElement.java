@@ -1,16 +1,17 @@
-package easy;
+package tags.array;
 
 import java.util.Arrays;
 
 /**
  * @author Vin lan
  * @className RemoveElement27
- * @description 移除元素
+ * @description 27 移除元素
+ * https://leetcode.cn/problems/remove-element
  * @createTime 2021-12-03  14:26
  **/
-public class RemoveElement27 {
+public class RemoveElement {
     public static void main(String[] args) {
-        RemoveElement27 obj = new RemoveElement27();
+        RemoveElement obj = new RemoveElement();
         System.out.println(obj.removeElement(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}, 2));
         System.out.println(obj.removeElement2(new int[]{1, 1, 2, 2, 3, 3}, 2));
     }

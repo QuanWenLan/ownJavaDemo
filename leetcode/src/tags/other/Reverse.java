@@ -1,15 +1,16 @@
-package easy;
+package tags.other;
 
 /**
  * @author Vin lan
  * @className Reverse7
- * @description 整数反转，https://leetcode-cn.com/problems/reverse-integer/
+ * @description 7 整数反转，
+ * https://leetcode-cn.com/problems/reverse-integer/
  * @createTime 2021-06-18  16:58
  **/
-public class Reverse7 {
+public class Reverse {
     public static void main(String[] args) {
         System.out.println(Long.parseLong("9646324351"));
-        Reverse7 reverse7 = new Reverse7();
+        Reverse reverse7 = new Reverse();
         System.out.println(reverse7.reverse(1534236469));
     }
 

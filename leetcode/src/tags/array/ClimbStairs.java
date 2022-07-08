@@ -1,14 +1,15 @@
-package easy;
+package tags.array;
 
 /**
  * @author Vin lan
  * @className ClimbStairs70
- * @description  爬楼梯 https://leetcode-cn.com/problems/climbing-stairs/
+ * @description  70 爬楼梯
+ * https://leetcode-cn.com/problems/climbing-stairs/
  * @createTime 2021-06-17  10:06
  **/
-public class ClimbStairs70 {
+public class ClimbStairs {
     public static void main(String[] args) {
-        ClimbStairs70 obj = new ClimbStairs70();
+        ClimbStairs obj = new ClimbStairs();
         System.out.println(obj.climbStairs(5));
     }
 

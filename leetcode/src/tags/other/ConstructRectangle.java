@@ -1,17 +1,17 @@
-package easy;
+package tags.other;
 
 import java.util.Arrays;
 
 /**
  * @author Vin lan
  * @className ConstructRectangle492
- * @description 构造矩形
+ * @description 492 构造矩形
  * https://leetcode-cn.com/problems/construct-the-rectangle/
  * @createTime 2021-06-21  15:39
  **/
-public class ConstructRectangle492 {
+public class ConstructRectangle {
     public static void main(String[] args) {
-        ConstructRectangle492 obj = new ConstructRectangle492();
+        ConstructRectangle obj = new ConstructRectangle();
         System.out.println(Arrays.toString(obj.constructRectangle(32)));
         System.out.println(Arrays.toString(obj.constructRectangle(322221)));
     }
