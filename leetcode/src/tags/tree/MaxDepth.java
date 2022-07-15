@@ -2,6 +2,9 @@ package tags.tree;
 
 import easy.TreeNode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author Vin lan
  * @className MaxDepth
@@ -18,10 +21,14 @@ public class MaxDepth {
         right.right = new TreeNode(7);
 
         System.out.println(new MaxDepth().maxDepth(root));
+        System.out.println(new MaxDepth().maxDepth3(root));
     }
 
-    // don't forget to initialize answer before call maximum_depth
+    /**
+     * don't forget to initialize answer before call maximum_depth
+     */
     private int answer;
+
     public int maxDepth(TreeNode root) {
         answer = 0;
         int depth = 1;
@@ -46,5 +53,35 @@ public class MaxDepth {
             return 0;
         }
         return Math.max(maxDepth2(root.left), maxDepth2(root.right)) + 1;
+    }
+
+    /**
+     * 中间迭代一层就是一个深度
+     *
+     * @param root
+     * @return
+     */
+    public int maxDepth3(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        Queue<TreeNode> que = new LinkedList<>();
+        que.offer(root);
+        int depth = 0;
+        while (!que.isEmpty()) {
+            int len = que.size();
+            while (len > 0) {
+                TreeNode node = que.poll();
+                if (node.left != null) {
+                    que.offer(node.left);
+                }
+                if (node.right != null) {
+                    que.offer(node.right);
+                }
+                len--;
+            }
+            depth++;
+        }
+        return depth;
     }
 }
