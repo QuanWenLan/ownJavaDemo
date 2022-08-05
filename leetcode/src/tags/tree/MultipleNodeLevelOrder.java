@@ -1,7 +1,6 @@
 package tags.tree;
 
-import commom.Node;
-import commom.TreeNode;
+import common.Node;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

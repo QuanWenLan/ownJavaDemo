@@ -1,7 +1,7 @@
 package tags.linkedlist;
 
 
-import commom.ListNode;
+import common.ListNode;
 
 /**
  * @program: javaDemo->InsertionListNode

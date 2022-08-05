@@ -1,5 +1,7 @@
 package easy;
 
+import common.TreeNode;
+
 /**
  * @author Vin lan
  * @className MaxDepth  https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/

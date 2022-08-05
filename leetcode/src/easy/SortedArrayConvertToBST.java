@@ -1,8 +1,8 @@
 package easy;
 
-import javax.lang.model.element.VariableElement;
+import common.TreeNode;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

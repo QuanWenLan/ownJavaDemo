@@ -1,4 +1,4 @@
-package commom;
+package common;
 
 /**
  * @author Vin lan

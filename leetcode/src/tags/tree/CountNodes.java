@@ -1,10 +1,8 @@
 package tags.tree;
 
-import commom.TreeNode;
+import common.TreeNode;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * @author Vin lan

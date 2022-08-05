@@ -1,8 +1,6 @@
 package easy;
 
-import commom.ListNode;
-
-import java.util.List;
+import common.ListNode;
 
 /**
  * @author Vin lan

@@ -1,6 +1,6 @@
 package tags.tree;
 
-import easy.TreeNode;
+import common.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,9 @@ public class SortedArrayConvertToBST {
         if (left > right) {
             return null;
         }
-        int mid = (left + right) / 2;
+//        int mid = (left + right) / 2;
+        // 防止溢出，左闭右闭操作
+        int mid = left + (right - left) / 2;
         TreeNode root = new TreeNode(nums[mid]);
         // 构造左节点
         root.left = helper(nums, left, mid - 1);

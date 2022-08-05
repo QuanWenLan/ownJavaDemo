@@ -1,6 +1,6 @@
 package tags.linkedlist;
 
-import commom.ListNode;
+import common.ListNode;
 
 /**
  * @author Vin lan

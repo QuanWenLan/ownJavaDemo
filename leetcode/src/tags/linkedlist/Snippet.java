@@ -1,6 +1,6 @@
 package tags.linkedlist;
 
-import commom.ListNode;
+import common.ListNode;
 
 /**
  * 合并两个有序的链表

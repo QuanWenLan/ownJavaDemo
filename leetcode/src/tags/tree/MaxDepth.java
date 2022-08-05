@@ -1,6 +1,6 @@
 package tags.tree;
 
-import easy.TreeNode;
+import common.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

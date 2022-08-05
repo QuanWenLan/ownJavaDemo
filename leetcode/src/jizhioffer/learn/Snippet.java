@@ -1,6 +1,6 @@
 package jizhioffer.learn;
 
-import commom.ListNode;
+import common.ListNode;
 
 // https://www.nowcoder.com/practice/d8b6b4358f774294a89de2a6ac4d9337?tpId=13&tqId=23267&ru=/practice/6ab1d9a29e88450685099d45c9e31e46&qru=/ta/coding-interviews/question-ranking
 public class Snippet {

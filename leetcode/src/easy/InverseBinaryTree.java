@@ -1,5 +1,7 @@
 package easy;
 
+import common.TreeNode;
+
 /**
  * @author Vin lan
  * @className InverseBinaryTree
