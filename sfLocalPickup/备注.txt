@@ -1,0 +1,19 @@
+获取顺丰地址，并解析相对应的地址插入到数据库
+localPickupInfo.properties 配置文件
+地址链接：
+#SFAddress
+app.sfBusinessStationAddress.url = https://htm.sf-express.com/hk/tc/dynamic_function/S.F.Network/SF_business_station_address/
+app.sfStoreAddress.url = https://htm.sf-express.com/hk/tc/dynamic_function/S.F.Network/SF_store_address/
+app.sfETLockerAddress.url = https://htm.sf-express.com/hk/tc/dynamic_function/S.F.Network/SF_Locker/
+app.sfServicePartnerAddress.url = https://htm.sf-express.com/hk/tc/dynamic_function/S.F.Network/SF_service_partner_address/
+app.sf.original.url =
+app.sf.replace.url =
+表结构
+CREATE TABLE `local_pickup` (
+  `pickup_id` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `area` varchar(200) COLLATE utf8mb4_bin DEFAULT NULL,
+  `address` text COLLATE utf8mb4_bin,
+  `pickup_type` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
+  `type_name` varchar(240) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`pickup_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin
