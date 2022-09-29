@@ -12,6 +12,15 @@ import java.util.ArrayList;
  * @date: 2022-04-17 10:17
  */
 public class ReverseList206 {
+    public static void main(String[] args) {
+        ListNode head = new ListNode(2);
+        ListNode next = head.next = new ListNode(3);
+        next.next = new ListNode(4);
+        ReverseList206 obj = new ReverseList206();
+        ListNode reverseNode = obj.reverse(head);
+        System.out.println(reverseNode);
+    }
+
     public ListNode reverseList(ListNode head) {
         if (head == null) {
             return null;
@@ -38,5 +47,23 @@ public class ReverseList206 {
             tempHead = newNode;
         }
         return zeroNode.next;
+    }
+
+    public ListNode reverse(ListNode node) {
+        // 前一个节点默认为null
+        ListNode preNode = null;
+        ListNode curNode = node;
+
+        while(curNode != null) {
+            // 记录节点的下一个节点
+            ListNode nextNode = curNode.next ;
+            // 改变next指向
+            curNode.next = preNode;
+            // 前一个节点变成当前节点
+            preNode = curNode;
+            // 下一个节点变成下一个节点
+            curNode = nextNode;
+        }
+        return preNode;
     }
 }
