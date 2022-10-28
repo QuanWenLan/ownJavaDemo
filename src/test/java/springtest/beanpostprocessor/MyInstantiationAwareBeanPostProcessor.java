@@ -1,6 +1,7 @@
 package springtest.beanpostprocessor;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 
 /**

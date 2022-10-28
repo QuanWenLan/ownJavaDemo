@@ -29,6 +29,8 @@
         <com.alibaba.firstjson.version>1.2.47</com.alibaba.firstjson.version>
         <netty.all.version>4.1.42.Final</netty.all.version>
         <javax.servlet.api.version>4.0.1</javax.servlet.api.version>
+<!--        从spring 5.2.7.RELEASE开始（包括5.2.7），spring aop的执行顺序发生了变化。 -->
+<!--        <org.springframework.version>5.2.7.RELEASE</org.springframework.version>-->
         <org.springframework.version>5.2.4.RELEASE</org.springframework.version>
         <joda-time.version>2.3</joda-time.version>
         <commons-configuration.version>1.7</commons-configuration.version>

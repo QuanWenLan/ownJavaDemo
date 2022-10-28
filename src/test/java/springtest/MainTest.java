@@ -5,6 +5,7 @@ import org.springframework.beans.factory.BeanCurrentlyInCreationException;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.SpringVersion;
 import org.springframework.core.io.ClassPathResource;
 import springtest.annotation.AnnotationTest;
 import springtest.annotation.AutowiredTest;
@@ -114,6 +115,7 @@ public class MainTest {
     // 测试AOP
     @Test
     public void testAop() {
+        System.out.println(SpringVersion.getVersion());
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:testAop.xml");
         TestBean testBean = (TestBean) context.getBean("test");
         testBean.test(new TestBean.Pa());
