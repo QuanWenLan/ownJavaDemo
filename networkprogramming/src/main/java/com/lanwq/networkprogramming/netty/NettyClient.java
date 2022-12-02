@@ -16,10 +16,14 @@ public class NettyClient {
     public static void main(String[] args) {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
-            Bootstrap b = new Bootstrap(); // (1)
-            b.group(workerGroup); // (2)
-            b.channel(NioSocketChannel.class); // (3)
-            b.option(ChannelOption.SO_KEEPALIVE, true); // (4)
+            // (1) 客户端启动引导类
+            Bootstrap b = new Bootstrap();
+            // (2) 事件处理
+            b.group(workerGroup);
+            // (3) 使用 nio 连接
+            b.channel(NioSocketChannel.class);
+            // (4)
+            b.option(ChannelOption.SO_KEEPALIVE, true);
             b.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
