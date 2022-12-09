@@ -12,7 +12,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
  * @Author Administrator
  * @Date 2019/12/19 9:29
  */
-public class NettyClient {
+public class DiscardClient {
     public static void main(String[] args) {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
@@ -27,13 +27,13 @@ public class NettyClient {
             b.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(new NettyClientHandler());
+                    ch.pipeline().addLast(new DiscardClientHandler());
 
                 }
             });
 
             // Start the client.
-            ChannelFuture f = b.connect("10.254.11.61", 7777).sync(); // (5)
+            ChannelFuture f = b.connect("127.0.0.1", 7777).sync(); // (5)
 
             // Wait until the connection is closed.
             f.channel().closeFuture().sync();

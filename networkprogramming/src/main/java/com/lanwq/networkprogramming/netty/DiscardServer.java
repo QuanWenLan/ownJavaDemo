@@ -39,7 +39,7 @@ public class DiscardServer {
             b.group(bossGroup, workerGroup)
                     // (3) 指定所使用的NIO传输 channel
                     .channel(NioServerSocketChannel.class)
-                    // (4) 添加一个 DiscardServerHandler 到 channel 的 channelPipeline
+                    // (4) 添加一个 DiscardServerHandler 到 channel 的 channelPipeline，服务端处理流程
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {

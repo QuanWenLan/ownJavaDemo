@@ -5,7 +5,10 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
+
+import java.util.Date;
 
 /**
  * @ClassName DiscardServerHandler
@@ -21,16 +24,28 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter  {
 //        ((ByteBuf) msg).release(); // (3)
 
         ByteBuf in = (ByteBuf) msg;
-        try {
-            while (in.isReadable()) { // (1)
+        System.out.println(new Date() + "：服务端读到数据-》"+ in.toString(CharsetUtil.UTF_8));
+        /*try {
+            while (in.isReadable()) {
                 System.out.print((char) in.readByte());
                 System.out.flush();
             }
         } finally {
-            ReferenceCountUtil.release(msg); // (2)
-        }
+            ReferenceCountUtil.release(msg);
+        }*/
+
+        System.out.println(new Date() + "：服务端写回数据-》" + "我还给你（客户端），没钱也还！");
+        ByteBuf buf = getByteBuf(ctx, "我还给你（客户端），没钱也还！");
+        ctx.channel().writeAndFlush(buf);
+        // 使用完记得要释放 ByteBuf，因为它使用的是堆外内存，不受JVM管理
     }
 
+    private ByteBuf getByteBuf(ChannelHandlerContext ctx, String msg) {
+        ByteBuf buffer = ctx.alloc().buffer();
+        byte[] bytes = msg.getBytes(CharsetUtil.UTF_8);
+        buffer.writeBytes(bytes);
+        return buffer;
+    }
     /**
      * 通知 channelInboundHandler 最后一次对 channelRead 的调用是当前批量读取中的最后一条信息
      */
