@@ -1,0 +1,1 @@
+使用 ChannelHandler 的例子，用来替换多个 if else，即是包 login 下的登录聊天逻辑

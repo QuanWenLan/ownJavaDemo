@@ -25,7 +25,7 @@ import static com.lanwq.networkprogramming.learnnetty.protocol.command.Command.M
  **/
 public class PacketCodeC {
     public static final PacketCodeC INSTANCE = new PacketCodeC();
-    private static final int MAGIC_NUMBER = 0X12345678;
+    public static final int MAGIC_NUMBER = 0X12345678;
     private final Map<Byte, Class<? extends Packet>> packetTypeMap;
     private final Map<Byte, Serializer> serializerMap;
 
@@ -54,6 +54,20 @@ public class PacketCodeC {
         byteBuf.writeInt(bytes.length);
         byteBuf.writeBytes(bytes);
 //        System.out.println("byteBuf 的可读字节长度是：" + byteBuf.readableBytes());
+        return byteBuf;
+    }
+
+    public ByteBuf encode(ByteBuf byteBuf, Packet packet) {
+        // 1 创建 ByteBuf 对象
+        // 2 序列化对象
+        byte[] bytes = Serializer.DEFAULT.serialize(packet);
+        // 3 实际编码
+        byteBuf.writeInt(MAGIC_NUMBER);
+        byteBuf.writeByte(packet.version);
+        byteBuf.writeByte(Serializer.DEFAULT.getSerializerAlgorithm());
+        byteBuf.writeByte(packet.getCommand());
+        byteBuf.writeInt(bytes.length);
+        byteBuf.writeBytes(bytes);
         return byteBuf;
     }
 

@@ -27,12 +27,12 @@ public class NettyServer {
 
         ServerBootstrap serverBootstrap1 = serverBootstrap.group(boss, worker)
                 .channel(NioServerSocketChannel.class)
-                .handler(new ChannelInitializer<NioSocketChannel>() {
+                /*.handler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
                         System.out.println("服务端启动中！");
                     }
-                })
+                })*/
                 .attr(AttributeKey.newInstance("serverName"), "netty server")
                 .childAttr(AttributeKey.newInstance("childAttr"), "child value")
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {

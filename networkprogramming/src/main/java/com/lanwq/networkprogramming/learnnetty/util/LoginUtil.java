@@ -1,6 +1,6 @@
 package com.lanwq.networkprogramming.learnnetty.util;
 
-import com.lanwq.networkprogramming.learnnetty.Attributes;
+import com.lanwq.networkprogramming.learnnetty.attributes.Attributes;
 import io.netty.channel.Channel;
 import io.netty.util.Attribute;
 

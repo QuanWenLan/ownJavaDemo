@@ -1,4 +1,4 @@
-package com.lanwq.networkprogramming.learnnetty;
+package com.lanwq.networkprogramming.learnnetty.attributes;
 
 import io.netty.util.AttributeKey;
 

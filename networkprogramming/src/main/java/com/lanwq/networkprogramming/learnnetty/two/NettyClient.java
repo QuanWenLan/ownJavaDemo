@@ -33,11 +33,11 @@ public class NettyClient {
                     }
                 });
         // 80 可以连接成功，88则不行，控制台打印连接失败的信息
-        Channel channel = connect(bootstrap, "meituan.com", 80, MAX_RETRY);
-//        Channel channel = bootstrap.connect("127.0.0.1", 9002).channel();
+//        Channel channel = connect(bootstrap, "meituan.com", 80, MAX_RETRY);
+        Channel channel = bootstrap.connect("127.0.0.1", 9002).channel();
         while (true) {
-            System.out.println("客户端开始写一条数据，" + new Date() + ": hello world!");
-            channel.writeAndFlush(new Date() + ": hello world!");
+            System.out.println("客户端开始写一条数据，" + new Date() + ": hello world!你好！");
+            channel.writeAndFlush(new Date() + ": hello world!你好！");
             Thread.sleep(2000);
         }
     }
