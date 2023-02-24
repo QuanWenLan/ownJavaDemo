@@ -1,6 +1,9 @@
 package sort;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
 
 /**
  * @author Vin lan
@@ -88,7 +91,7 @@ public class QuickSort {
             return;
         }
         int pivotIndex = partition2(nums, startIndex, endIndex);
-        System.out.println(Arrays.toString(nums));
+        System.out.println("基准元素：" + pivotIndex + "排序一次后：" + Arrays.toString(nums));
         quickSort2(nums, startIndex, pivotIndex - 1);
         quickSort2(nums, pivotIndex + 1, endIndex);
     }
@@ -96,7 +99,7 @@ public class QuickSort {
     /**
      * 单边循环
      *
-     * @param nums       待交换的数组
+     * @param nums       待交换的数组 {4, 7, 3, 5, 6, 2, 8, 1}
      * @param startIndex 开始索引
      * @param endIndex   结束索引
      */
@@ -116,5 +119,42 @@ public class QuickSort {
         nums[startIndex] = nums[mark];
         nums[mark] = pivot;
         return mark;
+    }
+
+    /**
+     * 非递归方法
+     *
+     * @param nums       待交换的数组 {4, 7, 3, 5, 6, 2, 8, 1}
+     * @param startIndex 开始索引
+     * @param endIndex   结束索引
+     */
+    public static void quickSort3(int[] nums, int startIndex, int endIndex) {
+        // 用一个集合栈来代替递归的函数栈
+        Stack<Map<String, Integer>> quickSortStack = new Stack<Map<String, Integer>>();
+        // 整个数列的起止下标，以哈希的形式入栈
+        Map rootParam = new HashMap();
+        rootParam.put("startIndex", startIndex);
+        rootParam.put("endIndex", endIndex);
+        quickSortStack.push(rootParam);
+        // 循环结束条件：栈为空时
+        while (!quickSortStack.isEmpty()) {
+            // 栈顶元素出栈，得到起止下标
+            Map<String, Integer> param = quickSortStack.pop();
+            // 得到基准元素位置
+            int pivotIndex = partition2(nums, param.get("startIndex"), param.get("endIndex"));
+            // 根据基准元素分成两部分, 把每一部分的起止下标入栈
+            if (param.get("startIndex") < pivotIndex - 1) {
+                Map<String, Integer> leftParam = new HashMap<String, Integer>();
+                leftParam.put("startIndex", param.get("startIndex"));
+                leftParam.put("endIndex", pivotIndex - 1);
+                quickSortStack.push(leftParam);
+            }
+            if (pivotIndex + 1 < param.get("endIndex")) {
+                Map<String, Integer> rightParam = new HashMap<String, Integer>();
+                rightParam.put("startIndex", pivotIndex + 1);
+                rightParam.put("endIndex", param.get("endIndex"));
+                quickSortStack.push(rightParam);
+            }
+        }
     }
 }

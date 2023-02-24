@@ -1,10 +1,10 @@
-package com.lanwq.networkprogramming.learnnetty.chat.console.impl;
-
-import com.lanwq.networkprogramming.learnnetty.chat.console.ConsoleCommand;
-import io.netty.channel.Channel;
-import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.LoginRequestPacket;
+package com.lanwq.networkprogramming.learnnetty.chat.client.console.impl;
 
 import java.util.Scanner;
+
+import com.lanwq.networkprogramming.learnnetty.chat.client.console.ConsoleCommand;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.LoginRequestPacket;
+import io.netty.channel.Channel;
 
 public class LoginConsoleCommand implements ConsoleCommand {
 

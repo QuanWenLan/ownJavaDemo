@@ -1,8 +1,8 @@
-package com.lanwq.networkprogramming.learnnetty.chat.console;
-
-import io.netty.channel.Channel;
+package com.lanwq.networkprogramming.learnnetty.chat.client.console;
 
 import java.util.Scanner;
+
+import io.netty.channel.Channel;
 
 /**
  * @author Vin lan
