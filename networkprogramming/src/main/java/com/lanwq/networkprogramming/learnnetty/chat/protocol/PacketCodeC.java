@@ -1,19 +1,33 @@
 package com.lanwq.networkprogramming.learnnetty.chat.protocol;
 
-import io.netty.buffer.ByteBuf;
-import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.LoginRequestPacket;
-import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.MessageRequestPacket;
-import com.lanwq.networkprogramming.learnnetty.chat.protocol.response.LoginResponsePacket;
-import com.lanwq.networkprogramming.learnnetty.chat.protocol.response.MessageResponsePacket;
-import com.lanwq.networkprogramming.learnnetty.chat.serialize.Serializer;
-import com.lanwq.networkprogramming.learnnetty.chat.serialize.impl.JSONSerializer;
-
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.lanwq.networkprogramming.learnnetty.chat.protocol.command.Command.*;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.command.Command;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.CreateGroupRequestPacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.GroupMessageRequestPacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.JoinGroupRequestPacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.ListGroupMembersRequestPacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.LoginRequestPacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.LogoutRequestPacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.MessageRequestPacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.QuitGroupRequestPacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.response.CreateGroupResponsePacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.response.GroupMessageResponsePacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.response.JoinGroupResponsePacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.response.ListGroupMembersResponsePacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.response.LoginResponsePacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.response.LogoutResponsePacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.response.MessageResponsePacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.response.QuitGroupResponsePacket;
+import com.lanwq.networkprogramming.learnnetty.chat.serialize.Serializer;
+import com.lanwq.networkprogramming.learnnetty.chat.serialize.impl.JSONSerializer;
+import io.netty.buffer.ByteBuf;
 
-public class PacketCodeC {
+/**
+ * @author lanwq
+ */
+public class PacketCodeC implements Command {
 
     public static final int MAGIC_NUMBER = 0x12345678;
     public static final PacketCodeC INSTANCE = new PacketCodeC();
@@ -28,6 +42,18 @@ public class PacketCodeC {
         packetTypeMap.put(LOGIN_RESPONSE, LoginResponsePacket.class);
         packetTypeMap.put(MESSAGE_REQUEST, MessageRequestPacket.class);
         packetTypeMap.put(MESSAGE_RESPONSE, MessageResponsePacket.class);
+        packetTypeMap.put(LOGOUT_REQUEST, LogoutRequestPacket.class);
+        packetTypeMap.put(LOGOUT_RESPONSE, LogoutResponsePacket.class);
+        packetTypeMap.put(CREATE_GROUP_REQUEST, CreateGroupRequestPacket.class);
+        packetTypeMap.put(CREATE_GROUP_RESPONSE, CreateGroupResponsePacket.class);
+        packetTypeMap.put(JOIN_GROUP_REQUEST, JoinGroupRequestPacket.class);
+        packetTypeMap.put(JOIN_GROUP_RESPONSE, JoinGroupResponsePacket.class);
+        packetTypeMap.put(QUIT_GROUP_REQUEST, QuitGroupRequestPacket.class);
+        packetTypeMap.put(QUIT_GROUP_RESPONSE, QuitGroupResponsePacket.class);
+        packetTypeMap.put(LIST_GROUP_MEMBERS_REQUEST, ListGroupMembersRequestPacket.class);
+        packetTypeMap.put(LIST_GROUP_MEMBERS_RESPONSE, ListGroupMembersResponsePacket.class);
+        packetTypeMap.put(GROUP_MESSAGE_REQUEST, GroupMessageRequestPacket.class);
+        packetTypeMap.put(GROUP_MESSAGE_RESPONSE, GroupMessageResponsePacket.class);
 
         serializerMap = new HashMap<>();
         Serializer serializer = new JSONSerializer();

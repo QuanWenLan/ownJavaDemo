@@ -1,11 +1,11 @@
-package com.lanwq.networkprogramming.learnnetty.chat.console.impl;
-
-import com.lanwq.networkprogramming.learnnetty.chat.console.ConsoleCommand;
-import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.CreateGroupRequestPacket;
-import io.netty.channel.Channel;
+package com.lanwq.networkprogramming.learnnetty.chat.client.console.impl;
 
 import java.util.Arrays;
 import java.util.Scanner;
+
+import com.lanwq.networkprogramming.learnnetty.chat.client.console.ConsoleCommand;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.CreateGroupRequestPacket;
+import io.netty.channel.Channel;
 
 /**
  * @author Vin lan

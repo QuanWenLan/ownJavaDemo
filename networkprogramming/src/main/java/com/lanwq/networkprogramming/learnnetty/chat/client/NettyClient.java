@@ -1,9 +1,27 @@
 package com.lanwq.networkprogramming.learnnetty.chat.client;
 
+import java.util.Date;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
+import com.lanwq.networkprogramming.learnnetty.chat.client.console.ConsoleCommandManager;
+import com.lanwq.networkprogramming.learnnetty.chat.client.console.impl.LoginConsoleCommand;
 import com.lanwq.networkprogramming.learnnetty.chat.client.handler.CreateGroupResponseHandler;
+import com.lanwq.networkprogramming.learnnetty.chat.client.handler.GroupMessageResponseHandler;
+import com.lanwq.networkprogramming.learnnetty.chat.client.handler.JoinGroupResponseHandler;
+import com.lanwq.networkprogramming.learnnetty.chat.client.handler.ListGroupMembersResponseHandler;
+import com.lanwq.networkprogramming.learnnetty.chat.client.handler.LoginResponseHandler;
 import com.lanwq.networkprogramming.learnnetty.chat.client.handler.LogoutResponseHandler;
-import com.lanwq.networkprogramming.learnnetty.chat.console.ConsoleCommandManager;
-import com.lanwq.networkprogramming.learnnetty.chat.console.impl.LoginConsoleCommand;
+import com.lanwq.networkprogramming.learnnetty.chat.client.handler.MessageResponseHandler;
+import com.lanwq.networkprogramming.learnnetty.chat.client.handler.QuitGroupResponseHandler;
+import com.lanwq.networkprogramming.learnnetty.chat.codec.PacketDecoder;
+import com.lanwq.networkprogramming.learnnetty.chat.codec.PacketEncoder;
+import com.lanwq.networkprogramming.learnnetty.chat.codec.Spliter;
+import com.lanwq.networkprogramming.learnnetty.chat.handler.IMIdleStateHandler;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.LoginRequestPacket;
+import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.MessageRequestPacket;
+import com.lanwq.networkprogramming.learnnetty.chat.server.handler.HeartBeatTimerHandler;
+import com.lanwq.networkprogramming.learnnetty.chat.util.SessionUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -12,18 +30,6 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import com.lanwq.networkprogramming.learnnetty.chat.client.handler.LoginResponseHandler;
-import com.lanwq.networkprogramming.learnnetty.chat.client.handler.MessageResponseHandler;
-import com.lanwq.networkprogramming.learnnetty.chat.codec.PacketDecoder;
-import com.lanwq.networkprogramming.learnnetty.chat.codec.PacketEncoder;
-import com.lanwq.networkprogramming.learnnetty.chat.codec.Spliter;
-import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.LoginRequestPacket;
-import com.lanwq.networkprogramming.learnnetty.chat.protocol.request.MessageRequestPacket;
-import com.lanwq.networkprogramming.learnnetty.chat.util.SessionUtil;
-
-import java.util.Date;
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author 闪电侠
@@ -50,16 +56,29 @@ public class NettyClient {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     public void initChannel(SocketChannel ch) {
+                        // 空闲检测
+                        ch.pipeline().addLast(new IMIdleStateHandler());
                         ch.pipeline().addLast(new Spliter());
                         ch.pipeline().addLast(new PacketDecoder());
+                        // 登录响应处理器
                         ch.pipeline().addLast(new LoginResponseHandler());
-                        ch.pipeline().addLast(new LogoutResponseHandler());
-                        // ==
-                        ch.pipeline().addLast(new MessageResponseHandler()); // 这个不是群聊的
-                        // 群聊
+                        // 收消息处理器
+                        ch.pipeline().addLast(new MessageResponseHandler());
+                        // 创建群响应处理器
                         ch.pipeline().addLast(new CreateGroupResponseHandler());
-                        // ==
+                        // 加群响应处理器
+                        ch.pipeline().addLast(new JoinGroupResponseHandler());
+                        // 退群响应处理器
+                        ch.pipeline().addLast(new QuitGroupResponseHandler());
+                        // 获取群成员响应处理器
+                        ch.pipeline().addLast(new ListGroupMembersResponseHandler());
+                        // 群消息响应
+                        ch.pipeline().addLast(new GroupMessageResponseHandler());
+                        // 登出响应处理器
+                        ch.pipeline().addLast(new LogoutResponseHandler());
                         ch.pipeline().addLast(new PacketEncoder());
+                        // 心跳定时器
+                        ch.pipeline().addLast(new HeartBeatTimerHandler());
                     }
                 });
 
