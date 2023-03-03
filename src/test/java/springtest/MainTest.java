@@ -3,6 +3,7 @@ package springtest;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanCurrentlyInCreationException;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.cglib.core.DebuggingClassWriter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.SpringVersion;
@@ -116,6 +117,8 @@ public class MainTest {
     @Test
     public void testAop() {
         System.out.println(SpringVersion.getVersion());
+        //        指定生成的字节码文件位置
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\projects\\ownJavaDemo");
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:testAop.xml");
         TestBean testBean = (TestBean) context.getBean("test");
         testBean.test(new TestBean.Pa());
