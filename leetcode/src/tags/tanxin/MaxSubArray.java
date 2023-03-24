@@ -3,7 +3,7 @@ package tags.tanxin;
 /**
  * @author Vin lan
  * @className MaxSubArray
- * @description
+ * @description 53 最大子数组和
  * @createTime 2022-08-17  10:06
  **/
 public class MaxSubArray {

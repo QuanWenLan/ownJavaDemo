@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * @author Vin lan
  * @className BuildTree2
- * @description
+ * @description 105 从前序与中序遍历序列构造二叉树
  * @createTime 2022-07-19  11:01
  **/
 public class BuildTree2 {

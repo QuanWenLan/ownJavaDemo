@@ -8,7 +8,7 @@ import java.util.Queue;
 /**
  * @author Vin lan
  * @className MinDepth
- * @description
+ * @description 111 二叉树的最小深度
  * @createTime 2022-07-14  17:34
  **/
 public class MinDepth {

@@ -4,7 +4,7 @@ import common.TreeNode;
 
 /**
  * @program: javaDemo->SearchBST
- * @description: 700 二叉搜索书中的搜索
+ * @description: 700 二叉搜索树中的搜索
  * @author: lanwenquan
  * @date: 2022-07-20 22:25
  */

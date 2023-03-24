@@ -5,7 +5,7 @@ import common.ListNode;
 
 /**
  * @program: javaDemo->InsertionListNode
- * @description: 链表插入排序
+ * @description: 147 对链表进行插入排序
  * @author: lanwenquan
  * @date: 2022-02-20 16:55
  */

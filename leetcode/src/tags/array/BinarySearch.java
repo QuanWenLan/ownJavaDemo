@@ -3,7 +3,7 @@ package tags.array;
 /**
  * @author Vin lan
  * @className BinarySearch
- * @description 二分查找
+ * @description 704 二分查找
  * @createTime 2021-11-08  16:40
  **/
 public class BinarySearch {
