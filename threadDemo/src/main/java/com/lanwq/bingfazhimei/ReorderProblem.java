@@ -1,7 +1,5 @@
 package com.lanwq.bingfazhimei;
 
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
-
 /**
  * @author Vin lan
  * @className ReorderProblem
