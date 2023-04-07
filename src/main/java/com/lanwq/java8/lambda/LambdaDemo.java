@@ -1,10 +1,17 @@
 package com.lanwq.java8.lambda;
 
+import com.alibaba.fastjson.JSON;
+import com.lanwq.java8.lambda.data.Student;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Vin lan
@@ -34,6 +41,8 @@ public class LambdaDemo {
         reduceWithLambda();
         System.out.println("======collectionWithLambda=======");
         collectionWithLambda();
+        System.out.println("======groupByWithLambda=======");
+        groupBy();
     }
 
     /**
@@ -174,4 +183,81 @@ public class LambdaDemo {
                 .collect(Collectors.toList());
         list2.forEach(num -> System.out.println(num));
     }
+
+    /**
+     * group by
+     */
+    public static void groupBy() {
+        Student student1 = new Student("7", "701", "张三", 16, "北京", 78, 90);
+        Student student2 = new Student("7", "700", "李四", 17, "北京", 78, 90);
+        Student student3 = new Student("7", "703", "王五", 16, "上海", 78, 90);
+        Student student4 = new Student("7", "701", "赵六", 16, "上海", 78, 90);
+        Student student5 = new Student("7", "700", "钱七", 18, "", 78, 90);
+        Student student6 = new Student("7", "701", "老八", 17, "", 78, 90);
+        // 这是一个高二年级的成绩单
+        List<Student> students = Stream.of(student1, student2, student3, student4, student5, student6).collect(Collectors.toList());
+        // 1 按照班级分组
+        System.out.println("按照班级分组");
+        Map<String, List<Student>> collect1 = students.stream().collect(Collectors.groupingBy(Student::getClassNumber));
+        System.out.println(JSON.toJSONString(collect1));
+        //{"700":[{"age":17,"chainessScores":90,"classNumber":"700","mathScores":78,"name":"李四"},{"age":18,"chainessScores":90,"classNumber":"700","mathScores":78,"name":"钱七"}],
+        //"701":[{"age":16,"chainessScores":90,"classNumber":"701","mathScores":78,"name":"张三"},{"age":16,"chainessScores":90,"classNumber":"701","mathScores":78,"name":"赵六"},{"age":17,"chainessScores":90,"classNumber":"701","mathScores":78,"name":"老八"}],
+        //"703":[{"age":16,"chainessScores":90,"classNumber":"703","mathScores":78,"name":"王五"}]}
+
+        // 2 按照班级分组得到每个班级的同学姓名
+        System.out.println("按照班级分组得到每个班级的同学姓名");
+        Map<String, List<String>> collect2 = students.stream().collect(
+                Collectors.groupingBy(Student::getClassNumber, Collectors.mapping(Student::getName, Collectors.toList())));
+        System.out.println(JSON.toJSONString(collect2));
+        //{"700":["李四","钱七"],"701":["张三","赵六","老八"],"703":["王五"]}
+
+        // 3 统计每个班级人数
+        System.out.println("统计每个班级人数");
+        Map<String, Long> collect3 = students.stream().collect(Collectors.groupingBy(Student::getClassNumber, Collectors.counting()));
+        System.out.println(JSON.toJSONString(collect3));
+        //{"700":2,"701":3,"703":1}
+
+        // 4 求每个班级的数学平均成绩
+        System.out.println("求每个班级的数学平均成绩");
+        Map<String, Double> collect4 = students.stream().collect(
+                Collectors.groupingBy(Student::getClassNumber, Collectors.averagingDouble(Student::getMathScores)));
+        System.out.println(JSON.toJSONString(collect4));
+        //{"700":65.0,"701":61.0,"703":82.0}
+
+        // 5 按班级分组求每个同学的总成绩
+        System.out.println("按班级分组求每个同学的总成绩");
+        Map<String, Map<String, Integer>> collect5 = students.stream().collect(
+                Collectors.groupingBy(Student::getClassNumber, Collectors.toMap(Student::getName, student -> student.getMathScores() + student.getChineseScores())));
+        System.out.println(JSON.toJSONString(collect5));
+        //{"700":{"钱七":150,"李四":160},"701":{"张三":168,"老八":148,"赵六":137},"703":{"王五":172}}
+
+        // 6 嵌套分组，先按班级分组，再按年龄分组
+        System.out.println("嵌套分组，先按班级分组，再按年龄分组");
+        Map<String, Map<Integer, List<Student>>> collect6 = students.stream().collect(
+                Collectors.groupingBy(Student::getClassNumber, Collectors.groupingBy(Student::getAge)));
+        System.out.println(JSON.toJSONString(collect6));
+
+        // 7 分组后得到一个线程安全的ConcurrentMap
+        System.out.println("分组后得到一个线程安全的ConcurrentMap");
+        ConcurrentMap<String, List<Student>> collect7 = students.stream().collect(
+                Collectors.groupingByConcurrent(Student::getClassNumber));
+        System.out.println(JSON.toJSONString(collect7));
+
+        // 8根据年龄分组并小到大排序,TreeMap默认为按照key升序
+        System.out.println("根据年龄分组并小到大排序,TreeMap默认为按照key升序");
+        TreeMap<Integer, List<String>> collect8 = students.stream().collect(
+                Collectors.groupingBy(Student::getAge, TreeMap::new, Collectors.mapping(Student::getName, Collectors.toList())));
+        System.out.println(JSON.toJSONString(collect8));
+        //{16:["张三","王五","赵六"],17:["李四","老八"],18:["钱七"]}
+
+        // 9 根据年龄分组并大到小排序,因为TreeMap默认为按照key升序，所以排完顺序再反转一下就OK了
+        System.out.println("根据年龄分组并大到小排序,TreeMap默认为按照key升序");
+        TreeMap<Integer, List<String>> collect9 = students.stream().collect(
+                Collectors.groupingBy(Student::getAge, TreeMap::new, Collectors.mapping(Student::getName, Collectors.toList())));
+        Map<Integer, List<String>> collect10 = collect9.descendingMap();
+        System.out.println(JSON.toJSONString(collect10));
+        //{18:["钱七"],17:["李四","老八"],16:["张三","王五","赵六"]}
+    }
+
+
 }
