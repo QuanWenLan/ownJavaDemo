@@ -1,6 +1,7 @@
 package com.lanwq.java8.lambda;
 
-import com.sun.deploy.util.StringUtils;
+import org.apache.commons.lang.StringUtils;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +20,7 @@ public class SecondCateNameList {
         String secondCateNames = "女性护理,美妆工具,口腔护理";
 
         //将字符串转换成数组，使用apache的StringUtils.split(string,char)
-        String[] split = StringUtils.splitString(secondCateNames,",");
+        String[] split = StringUtils.split(secondCateNames,",");
 
         //使用Stream转换，过滤，用单引号进行拼接。
         List<String> secondCateNameList = Arrays.asList(split).stream().filter(Objects::nonNull)

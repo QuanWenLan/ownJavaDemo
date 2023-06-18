@@ -75,7 +75,7 @@ public class Testttt {
 
     @Test
     public void test4() {
-        Map columns = new HashMap();
+        HashMap columns = new HashMap();
         int i = "abc".hashCode();
         System.out.println("hashcode:" + i);
         int i2 = i >>> 16;

@@ -125,6 +125,29 @@ public class MainTest {
         // 这种方式创建出来的不是 代理 对象，而是普通的 new 出来的对象，不会触发 增强方法.上面使用 getBean 方法的才是 spring 创建的代理对象
         System.out.println("**************");
         TestBean.createInstance().test(new TestBean.Pa());
+        /* 5.2.4.RELEASE
+         * @Around 方法 before
+         * @Before beforeTest
+         * 1,xiaoming
+         * testgg
+         * test内部对象
+         * @Around 方法 after
+         * @After afterTest
+         * @AfterReturning
+         */
+
+        /* 5.2.7.RELEASE
+         * @Around 方法 before
+         * @Before beforeTest
+         * 1,xiaoming
+         * testgg
+         * test内部对象
+         * @AfterReturning
+         * @After afterTest
+         * @Around 方法 after
+         *
+         */
+
     }
 
     // 测试 代理

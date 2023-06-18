@@ -6,7 +6,6 @@
 
     <groupId>com.lanwq</groupId>
     <artifactId>javaThinkingDemo</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 <!--    识别不到 resources 下文件,把这打包方式注释掉 https://blog.csdn.net/weixin_43409994/article/details/118157694 -->
 <!--    <packaging>pom</packaging>-->
@@ -30,8 +29,8 @@
         <netty.all.version>4.1.42.Final</netty.all.version>
         <javax.servlet.api.version>4.0.1</javax.servlet.api.version>
 <!--        从spring 5.2.7.RELEASE开始（包括5.2.7），spring aop的执行顺序发生了变化。 -->
-<!--        <org.springframework.version>5.2.7.RELEASE</org.springframework.version>-->
-        <org.springframework.version>5.2.4.RELEASE</org.springframework.version>
+        <org.springframework.version>5.2.8.RELEASE</org.springframework.version>
+<!--        <org.springframework.version>5.2.4.RELEASE</org.springframework.version>-->
         <joda-time.version>2.3</joda-time.version>
         <commons-configuration.version>1.7</commons-configuration.version>
         <commons-lang.version>2.4</commons-lang.version>
@@ -130,14 +129,14 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>5.2.4.RELEASE</version>
+            <version>${org.springframework.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>5.2.4.RELEASE</version>
+            <version>${org.springframework.version}</version>
         </dependency>
         <!--orm框架支持-->
         <dependency>
@@ -177,6 +176,12 @@
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox</artifactId>
             <version>2.0.15</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/jempbox -->
         <dependency>
@@ -286,6 +291,10 @@
                     <artifactId>slf4j-api</artifactId>
                     <groupId>org.slf4j</groupId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>commons-beanutils</artifactId>
+                    <groupId>commons-beanutils</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
 <!--        spring mvc 文件上传功能-->
@@ -311,6 +320,12 @@
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
             <version>${commons-configuration.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-lang</artifactId>
+                    <groupId>commons-lang</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -329,6 +344,12 @@
             <groupId>commons-digester</groupId>
             <artifactId>commons-digester</artifactId>
             <version>${commons-digester.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-beanutils</artifactId>
+                    <groupId>commons-beanutils</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -340,6 +361,12 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.3</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
