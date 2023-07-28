@@ -1,6 +1,6 @@
 package tags.array;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * @program: javaDemo->LengthOfLongestSubstring
@@ -12,12 +12,13 @@ import java.util.HashMap;
 public class LengthOfLongestSubstring {
     public static void main(String[] args) {
         LengthOfLongestSubstring obj = new LengthOfLongestSubstring();
-        System.out.println(obj.lengthOfLongestSubstring("pwwkew"));
+        System.out.println(obj.lengthOfLongestSubstring("pwwkewab"));
     }
 
     public int lengthOfLongestSubstring(String s) {
-        int left = 0,right = 0, res = 0, len = s.length();
-        HashMap<Character, Integer> window = new HashMap<>();
+        int left = 0, right = 0, res = 0, len = s.length();
+        LinkedHashMap<Character, Integer> window = new LinkedHashMap<>();
+        String maxLenStr = "";
 
         while (right < len) {
             char c = s.charAt(right);
@@ -40,7 +41,11 @@ public class LengthOfLongestSubstring {
                 System.out.println("window 修改后：" + window.toString());
                 left++;
             }
-
+            int sub = right - left;
+            if (sub > res) {
+                maxLenStr = s.substring(left, right);
+                System.out.println("最长的字符串为：" + maxLenStr);
+            }
             res = Math.max(res, right - left);
             System.out.println("res: " + res);
         }
