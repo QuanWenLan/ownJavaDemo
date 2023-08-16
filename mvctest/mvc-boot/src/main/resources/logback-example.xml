@@ -1,0 +1,75 @@
+<!--<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}:%line - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="ASYNCSTDOUT" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="STDOUT" />
+  </appender>
+
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${application.home:-.}/logs/mvcTest.log</file>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}:%line - %msg%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${application.home:-.}/logs/mvcTest.log.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+      &lt;!&ndash; keep 90 days' worth of history capped at 20GB total size &ndash;&gt;
+      <maxHistory>90</maxHistory>
+      <totalSizeCap>20GB</totalSizeCap>
+    </rollingPolicy>
+  </appender>
+
+  <appender name="ASYNCFILE" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="FILE" />
+  </appender>
+
+  <appender name="ERRORFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${application.home:-.}/logs/mvcTest-error.log</file>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}:%line - %msg%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${application.home:-.}/logs/mvcTest-error.log.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+      &lt;!&ndash; keep 90 days' worth of history capped at 20GB total size &ndash;&gt;
+      <maxHistory>90</maxHistory>
+      <totalSizeCap>20GB</totalSizeCap>
+    </rollingPolicy>
+  </appender>
+
+  <appender name="ASYNCERRORFILE" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="ERRORFILE" />
+  </appender>
+
+  <logger name="play" level="INFO" />
+  <logger name="application" level="DEBUG" />
+  <logger name="org.quartz.core.QuartzSchedulerThread" level="INFO" />
+  <logger name="org.springframework" level="DEBUG" />
+  &lt;!&ndash; Off these ones as they are annoying, and anyway we manage configuration ourselves &ndash;&gt;
+  <logger name="com.gargoylesoftware.htmlunit.javascript" level="OFF" />
+
+  <logger name="org.hibernate.internal.util.EntityPrinter" level="OFF" />
+  <logger name="org.hibernate.SQL" level="OFF" />
+  <logger name="org.hibernate.hql.internal.ast.HqlSqlWalker" level="OFF" />
+  <logger name="org.hibernate.hql.internal.antlr.HqlSqlBaseWalker" level="OFF" />
+  <logger name="org.hibernate.hql.internal.ast.QueryTranslatorImpl" level="OFF" />
+  <logger name="org.hibernate.loader.Loader" level="OFF" />
+  <logger name="org.hibernate.engine.internal.TwoPhaseLoad" level="OFF" />
+  <logger name="org.hibernate.hql.internal.ast.util.JoinProcessor" level="OFF" />
+  <logger name="org.apache.http" level="ERROR" />
+
+  <root level="DEBUG">
+    <appender-ref ref="ASYNCFILE" />
+    <appender-ref ref="ASYNCERRORFILE" />
+    <appender-ref ref="ASYNCSTDOUT" />
+  </root>
+
+</configuration>-->
