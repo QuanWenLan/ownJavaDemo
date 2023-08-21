@@ -6,17 +6,20 @@ package org.quange.springframework.beans.factory.factory;
  * 用于定义bean的实例化信息
  **/
 public class BeanDefinition {
-    private Object bean;
+    /**
+     * class 对象的话，可以给容器来创建实例
+     */
+    private Class beanClass;
 
-    public BeanDefinition(Object bean) {
-        this.bean = bean;
+    public BeanDefinition(Class beanClass) {
+        this.beanClass = beanClass;
     }
 
-    public Object getBean() {
-        return bean;
+    public Class getBeanClass() {
+        return beanClass;
     }
 
-    public void setBean(Object bean) {
-        this.bean = bean;
+    public void setBeanClass(Class beanClass) {
+        this.beanClass = beanClass;
     }
 }
