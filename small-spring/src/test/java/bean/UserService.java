@@ -8,8 +8,12 @@ public class UserService {
     private String userId;
     private UserDao userDao;
 
+    public UserService(String userId) {
+        this.userId = userId;
+    }
+
     public void queryUserInfo() {
-        System.out.println("查询用户信息：" + userDao.queryUserName(userId));
+        System.out.println("查询用户信息：" + userId);
     }
 
     public String getUserId() {
@@ -26,5 +30,13 @@ public class UserService {
 
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
+    }
+
+    @Override
+    public String toString() {
+        return "UserService{" +
+                "userId='" + userId + '\'' +
+                ", userDao=" + userDao +
+                '}';
     }
 }

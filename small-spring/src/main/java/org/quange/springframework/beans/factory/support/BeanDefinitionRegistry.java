@@ -1,6 +1,6 @@
 package org.quange.springframework.beans.factory.support;
 
-import org.quange.springframework.beans.factory.factory.BeanDefinition;
+import org.quange.springframework.beans.factory.config.BeanDefinition;
 
 /**
  * @author Lan

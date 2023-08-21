@@ -1,6 +1,6 @@
 package org.quange.springframework.beans.factory.support;
 
-import org.quange.springframework.beans.factory.factory.SingletonBeanRegistry;
+import org.quange.springframework.beans.factory.config.SingletonBeanRegistry;
 
 import java.util.HashMap;
 import java.util.Map;

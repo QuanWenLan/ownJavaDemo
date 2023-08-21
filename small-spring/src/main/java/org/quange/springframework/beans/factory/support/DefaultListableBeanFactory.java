@@ -1,7 +1,7 @@
 package org.quange.springframework.beans.factory.support;
 
 import org.quange.springframework.beans.BeansException;
-import org.quange.springframework.beans.factory.factory.BeanDefinition;
+import org.quange.springframework.beans.factory.config.BeanDefinition;
 
 import java.util.HashMap;
 import java.util.Map;

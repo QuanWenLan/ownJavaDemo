@@ -1,4 +1,4 @@
-package org.quange.springframework.beans.factory.factory;
+package org.quange.springframework.beans.factory.config;
 
 /**
  * @author Lan
