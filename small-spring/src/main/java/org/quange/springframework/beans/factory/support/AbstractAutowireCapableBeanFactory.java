@@ -12,6 +12,7 @@ import java.lang.reflect.Constructor;
 /**
  * @author Lan
  * @createTime 2023-08-18  17:23
+ * 具体的实现类的抽象类，如何创建bean实例
  **/
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
 
@@ -40,7 +41,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
                 Object value = propertyValue.getValue();
                 if (value instanceof BeanReference) {
                     // A 依赖B，获取B
-                    BeanReference beanReference = (BeanReference)value;
+                    BeanReference beanReference = (BeanReference) value;
                     value = getBean(beanReference.getBeanName());
                 }
                 // 属性填充

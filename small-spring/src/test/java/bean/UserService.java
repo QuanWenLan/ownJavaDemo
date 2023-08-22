@@ -8,6 +8,9 @@ public class UserService {
     private String userId;
     private UserDao userDao;
 
+    public UserService() {
+    }
+
     public UserService(String userId) {
         this.userId = userId;
     }

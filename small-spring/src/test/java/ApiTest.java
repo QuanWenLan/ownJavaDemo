@@ -95,4 +95,39 @@ public class ApiTest {
         UserService userService = declaredConstructor.newInstance("小傅哥");
         System.out.println(userService);
     }
+
+    /**
+     * 从 xml 文件中读取bean
+     * @throws BeansException
+     */
+    @Test
+    public void testBeanFactoryFromXml() throws BeansException {
+        // 1.初始化 BeanFactory
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        beanFactory.setInstantiationStrategy(new CglibSubclassingInstantiationStrategy());
+
+        // 2.注册 bean
+        // 2.1 UserDao 注册
+        beanFactory.registerBeanDefinition("userDao", new BeanDefinition(UserDao.class));
+
+        // 2.2 UserService 设置属性[userId、userDao]
+        PropertyValues propertyValues = new PropertyValues();
+        propertyValues.addPropertyValue(new PropertyValue("userId", "10001"));
+        propertyValues.addPropertyValue(new PropertyValue("userDao",new BeanReference("userDao")));
+
+//        BeanDefinition beanDefinition = new BeanDefinition(UserService.class);
+        BeanDefinition beanDefinition = new BeanDefinition(UserService.class, propertyValues);
+        beanFactory.registerBeanDefinition("userService", beanDefinition);
+
+        // 3.获取 bean
+        // 使用构造器注入
+//        UserService userService = (UserService) beanFactory.getBean("userService", "1001");
+        // 使用属性注入
+        UserService userService = (UserService) beanFactory.getBean("userService");
+        userService.queryUserInfo();
+
+        // 4. 第二次获取bean, from SingletonObjects
+        UserService userServiceSingleton = (UserService) beanFactory.getBean("userService");
+        userServiceSingleton.queryUserInfo();
+    }
 }
