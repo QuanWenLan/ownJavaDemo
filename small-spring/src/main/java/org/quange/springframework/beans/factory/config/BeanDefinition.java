@@ -1,5 +1,7 @@
 package org.quange.springframework.beans.factory.config;
 
+import org.quange.springframework.beans.PropertyValues;
+
 /**
  * @author Lan
  * @createTime 2023-08-18  16:59
@@ -11,15 +13,31 @@ public class BeanDefinition {
      */
     private Class beanClass;
 
+    private PropertyValues propertyValues;
+
     public BeanDefinition(Class beanClass) {
         this.beanClass = beanClass;
+        this.propertyValues = new PropertyValues();
+    }
+
+    public BeanDefinition(Class beanClass, PropertyValues propertyValues) {
+        this.beanClass = beanClass;
+        this.propertyValues = propertyValues != null ? propertyValues : new PropertyValues();
     }
 
     public Class getBeanClass() {
-        return beanClass;
+        return this.beanClass;
     }
 
     public void setBeanClass(Class beanClass) {
         this.beanClass = beanClass;
+    }
+
+    public PropertyValues getPropertyValues() {
+        return this.propertyValues;
+    }
+
+    public void setPropertyValues(PropertyValues propertyValues) {
+        this.propertyValues = propertyValues;
     }
 }
