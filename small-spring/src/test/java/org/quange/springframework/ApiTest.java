@@ -1,5 +1,7 @@
-import bean.UserDao;
-import bean.UserService;
+package org.quange.springframework;
+
+import org.quange.springframework.bean.UserDao;
+import org.quange.springframework.bean.UserService;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.NoOp;
 import org.junit.Test;
@@ -10,7 +12,6 @@ import org.quange.springframework.beans.factory.config.BeanDefinition;
 import org.quange.springframework.beans.factory.config.BeanReference;
 import org.quange.springframework.beans.factory.support.CglibSubclassingInstantiationStrategy;
 import org.quange.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.quange.springframework.beans.factory.support.SimpleInstantiationStrategy;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

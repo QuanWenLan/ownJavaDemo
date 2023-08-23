@@ -8,7 +8,8 @@ import org.quange.springframework.core.io.ResourceLoader;
  * @createTime 2023-08-22  14:03
  **/
 public abstract class AbstractBeanDefinitionReader implements BeanDefinitionReader {
-    private BeanDefinitionRegistry registry;
+
+    private final BeanDefinitionRegistry registry;
 
     private ResourceLoader resourceLoader;
 

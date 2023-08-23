@@ -1,6 +1,8 @@
 package org.quange.springframework.beans.factory;
 
+import org.quange.springframework.beans.BeansException;
 import org.quange.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.quange.springframework.beans.factory.config.BeanDefinition;
 import org.quange.springframework.beans.factory.config.ConfigurableBeanFactory;
 
 /**
@@ -22,5 +24,8 @@ import org.quange.springframework.beans.factory.config.ConfigurableBeanFactory;
  * 这个子接口并不打算在正常的应用程序代码中使用:对于典型的用例，坚持使用{@link BeanFactory}或{@link ListableBeanFactory}。
  * 这个接口只是为了允许框架内部即插即用，即使在需要访问bean工厂配置方法时也是如此。
  **/
-public interface ConfigurableListableBeanFactory extends ListableBeanFactory, ConfigurableBeanFactory, AutowireCapableBeanFactory {
+public interface ConfigurableListableBeanFactory extends ListableBeanFactory,  AutowireCapableBeanFactory, ConfigurableBeanFactory {
+    BeanDefinition getBeanDefinition(String beanName) throws BeansException;
+
+    void preInstantiateSingletons() throws BeansException;
 }
