@@ -15,7 +15,7 @@ import java.util.List;
  * @createTime 2023-08-18  17:20
  * 抽象类定义模板方法
  **/
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
+public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport implements ConfigurableBeanFactory {
 
     /** ClassLoader to resolve bean class names with, if necessary */
     private ClassLoader beanClassLoader = ClassUtils.getDefaultClassLoader();
