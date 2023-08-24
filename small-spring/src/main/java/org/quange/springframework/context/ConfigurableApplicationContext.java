@@ -29,4 +29,8 @@ public interface ConfigurableApplicationContext extends ApplicationContext {
      * attempts are not supported
      */
     void refresh() throws BeansException;
+
+    void registerShutdownHook();
+
+    void close();
 }

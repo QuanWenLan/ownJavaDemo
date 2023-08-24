@@ -75,4 +75,17 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
     public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
         return getBeanFactory().getBean(name, requiredType);
     }
+
+    /**
+     * 向虚拟机注册狗子，保证在虚拟机关闭之前，执行销毁操作
+     */
+    @Override
+    public void registerShutdownHook() {
+        Runtime.getRuntime().addShutdownHook(new Thread(this::close));
+    }
+
+    @Override
+    public void close() {
+        getBeanFactory().destroySingletons();
+    }
 }

@@ -31,6 +31,7 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 
     /**
      * 从 XML 中加载 BeanDefinition，并刷新上下文
+     *
      * @param configLocations
      * @throws BeansException
      */

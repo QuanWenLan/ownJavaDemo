@@ -1,9 +1,12 @@
 package org.quange.springframework.bean;
 
+import org.quange.springframework.beans.factory.DisposableBean;
+import org.quange.springframework.beans.factory.InitializingBean;
+
 /**
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
  */
-public class UserService {
+public class UserService implements InitializingBean, DisposableBean {
 
     private String uId;
     private String company;
@@ -44,5 +47,15 @@ public class UserService {
 
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("执行：UserService.destroy");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("执行：UserService.afterPropertiesSet");
     }
 }

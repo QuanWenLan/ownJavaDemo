@@ -82,6 +82,23 @@ public class ApiTest2 {
         System.out.println("测试结果：" + result);
     }
 
+
+    /**
+     * 从统一入口加载，添加了init初始化方法和销毁方法
+     */
+    @Test
+    public void test_xml3() throws BeansException {
+        // 1.初始化 BeanFactory
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:springPostProcessor-init.xml");
+        // 注册了一个钩子函数
+        applicationContext.registerShutdownHook();
+
+        // 3. 获取Bean对象调用方法
+        UserService userService = applicationContext.getBean("userService", UserService.class);
+        String result = userService.queryUserInfo();
+        System.out.println("测试结果：" + result);
+    }
+
     @Test
     public void test_classpath() throws IOException {
         Resource resource = resourceLoader.getResource("classpath:important.properties");
