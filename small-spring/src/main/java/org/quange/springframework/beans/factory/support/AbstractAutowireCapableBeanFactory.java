@@ -5,6 +5,10 @@ import cn.hutool.core.util.StrUtil;
 import org.quange.springframework.beans.BeansException;
 import org.quange.springframework.beans.PropertyValue;
 import org.quange.springframework.beans.PropertyValues;
+import org.quange.springframework.beans.factory.Aware;
+import org.quange.springframework.beans.factory.BeanClassLoaderAware;
+import org.quange.springframework.beans.factory.BeanFactoryAware;
+import org.quange.springframework.beans.factory.BeanNameAware;
 import org.quange.springframework.beans.factory.DisposableBean;
 import org.quange.springframework.beans.factory.InitializingBean;
 import org.quange.springframework.beans.factory.config.AutowireCapableBeanFactory;
@@ -34,7 +38,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
             // 执行 Bean 的初始化方法和 BeanPostProcessor 的前置和后置处理方法
             bean = initializeBean(beanName, bean, beanDefinition);
         } catch (Exception e) {
-            throw new BeansException("Instantiation of bean failed", e);
+            throw new BeansException("Instantiation of bean failed, bean name : " + beanName, e);
         }
 
         // 注册实现了 DisposableBean 接口的 Bean 对象
@@ -92,6 +96,20 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     }
 
     private Object initializeBean(String beanName, Object bean, BeanDefinition beanDefinition) {
+
+        // invokeAwareMethods
+        if (bean instanceof Aware) {
+            if (bean instanceof BeanFactoryAware) {
+                ((BeanFactoryAware) bean).setBeanFactory(this);
+            }
+            if (bean instanceof BeanClassLoaderAware) {
+                ((BeanClassLoaderAware) bean).setBeanClassLoader(getBeanClassLoader());
+            }
+            if (bean instanceof BeanNameAware) {
+                ((BeanNameAware) bean).setBeanName(beanName);
+            }
+        }
+
         // 1. 执行 BeanPostProcessor Before 处理
         Object wrappedBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
 

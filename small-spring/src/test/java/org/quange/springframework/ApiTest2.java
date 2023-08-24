@@ -4,6 +4,7 @@ import org.quange.springframework.bean.UserService;
 import cn.hutool.core.io.IoUtil;
 import org.junit.Before;
 import org.junit.Test;
+import org.quange.springframework.bean.UserServiceByAware;
 import org.quange.springframework.beans.BeansException;
 import org.quange.springframework.beans.factory.support.CglibSubclassingInstantiationStrategy;
 import org.quange.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -97,6 +98,24 @@ public class ApiTest2 {
         UserService userService = applicationContext.getBean("userService", UserService.class);
         String result = userService.queryUserInfo();
         System.out.println("测试结果：" + result);
+    }
+
+    /**
+     * 从统一入口加载，添加了init初始化方法和销毁方法，添加aware接口
+     */
+    @Test
+    public void test_xml3_aware() throws BeansException {
+        // 1.初始化 BeanFactory
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:springPostProcessor-aware.xml");
+        // 注册了一个钩子函数
+        applicationContext.registerShutdownHook();
+
+        // 3. 获取Bean对象调用方法
+        UserServiceByAware userServiceByAware = applicationContext.getBean("userServiceByAware", UserServiceByAware.class);
+        String result = userServiceByAware.queryUserInfo();
+        System.out.println("测试结果：" + result);
+        System.out.println("ApplicationContext：" + userServiceByAware.getApplicationContext());
+        System.out.println("BeanFactory：" + userServiceByAware.getBeanFactory());
     }
 
     @Test
