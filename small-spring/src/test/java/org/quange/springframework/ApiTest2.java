@@ -106,7 +106,7 @@ public class ApiTest2 {
     @Test
     public void test_xml3_aware() throws BeansException {
         // 1.初始化 BeanFactory
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:springPostProcessor-aware.xml");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-aware.xml");
         // 注册了一个钩子函数
         applicationContext.registerShutdownHook();
 
