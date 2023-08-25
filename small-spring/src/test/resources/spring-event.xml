@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean class="org.quange.springframework.event.ContextRefreshedEventListener"/>
+
+    <bean class="org.quange.springframework.event.CustomEventListener"/>
+
+    <bean class="org.quange.springframework.event.ContextClosedEventListener"/>
+    
+</beans>

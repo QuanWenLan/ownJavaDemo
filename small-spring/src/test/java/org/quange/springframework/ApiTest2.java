@@ -16,6 +16,7 @@ import org.quange.springframework.common.MyBeanPostProcessor;
 import org.quange.springframework.context.support.ClassPathXmlApplicationContext;
 import org.quange.springframework.core.io.DefaultResourceLoader;
 import org.quange.springframework.core.io.Resource;
+import org.quange.springframework.event.CustomEvent;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -174,5 +175,14 @@ public class ApiTest2 {
         InputStream inputStream = resource.getInputStream();
         String content = IoUtil.readUtf8(inputStream);
         System.out.println(content);
+    }
+
+
+    @Test
+    public void test_event() {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-event.xml");
+        applicationContext.publishEvent(new CustomEvent(applicationContext, 1019129009086763L, "成功了！"));
+
+        applicationContext.registerShutdownHook();
     }
 }

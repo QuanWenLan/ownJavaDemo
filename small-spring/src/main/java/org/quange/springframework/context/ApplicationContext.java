@@ -2,6 +2,7 @@ package org.quange.springframework.context;
 
 import org.quange.springframework.beans.factory.HierarchicalBeanFactory;
 import org.quange.springframework.beans.factory.ListableBeanFactory;
+import org.quange.springframework.core.io.ResourceLoader;
 
 /**
  * @author Lan
@@ -26,5 +27,6 @@ import org.quange.springframework.beans.factory.ListableBeanFactory;
  * its own child context that is independent of that of any other servlet.
  * </ul>
  **/
-public interface ApplicationContext extends ListableBeanFactory, HierarchicalBeanFactory {
+public interface ApplicationContext extends ListableBeanFactory, HierarchicalBeanFactory, ResourceLoader, ApplicationEventPublisher {
+
 }
