@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="proxyUserDao" class="org.quange.springframework.bean.ProxyBeanFactory"/>
+
+    <bean id="userService" class="org.quange.springframework.bean.IUserService" scope="singleton">
+        <property name="uId" value="10001"/>
+        <property name="company" value="腾讯"/>
+        <property name="location" value="深圳"/>
+        <property name="userDao" ref="proxyUserDao"/>
+    </bean>
+</beans>

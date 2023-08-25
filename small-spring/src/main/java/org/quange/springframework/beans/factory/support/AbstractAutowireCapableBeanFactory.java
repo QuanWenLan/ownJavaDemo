@@ -10,6 +10,7 @@ import org.quange.springframework.beans.factory.BeanClassLoaderAware;
 import org.quange.springframework.beans.factory.BeanFactoryAware;
 import org.quange.springframework.beans.factory.BeanNameAware;
 import org.quange.springframework.beans.factory.DisposableBean;
+import org.quange.springframework.beans.factory.FactoryBean;
 import org.quange.springframework.beans.factory.InitializingBean;
 import org.quange.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.quange.springframework.beans.factory.config.BeanDefinition;
@@ -43,9 +44,6 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
         // 注册实现了 DisposableBean 接口的 Bean 对象
         registerDisposableBeanIfNecessary(beanName, bean, beanDefinition);
-
-        // 添加到缓存
-        addSingleton(beanName, bean);
         return bean;
     }
 
@@ -164,6 +162,10 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     }
 
     protected void registerDisposableBeanIfNecessary(String beanName, Object bean, BeanDefinition beanDefinition) {
+        // 非 singleton 类型的 BeanDefinition 不注册、不执行销毁方法
+        if (!beanDefinition.isSingleton()) {
+            return;
+        }
         if (bean instanceof DisposableBean || StrUtil.isNotEmpty(beanDefinition.getDestroyMethodName())) {
             registerDisposableBean(beanName, new DisposableBeanAdapter(bean, beanName, beanDefinition));
         }
