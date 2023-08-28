@@ -52,6 +52,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 
         BeanDefinition beanDefinition = getBeanDefinition(name);
         Object bean = createBean(name, beanDefinition, args);
+        // 判断 SCOPE_SINGLETON、SCOPE_PROTOTYPE
         if (beanDefinition.isSingleton()) {
             // 添加到缓存
             addSingleton(name, bean);
