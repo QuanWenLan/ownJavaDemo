@@ -10,6 +10,7 @@ import org.quange.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor;
 import org.quange.springframework.aop.framework.AdvisedSupport;
 import org.quange.springframework.aop.framework.ProxyFactory;
 import org.quange.springframework.beans.BeansException;
+import org.quange.springframework.beans.PropertyValues;
 import org.quange.springframework.beans.factory.BeanFactory;
 import org.quange.springframework.beans.factory.BeanFactoryAware;
 import org.quange.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
@@ -67,6 +68,11 @@ public class DefaultAdvisorAutoProxyCreator implements InstantiationAwareBeanPos
         }
 
         return null;
+    }
+
+    @Override
+    public PropertyValues postProcessPropertyValues(PropertyValues pvs, Object bean, String beanName) throws BeansException {
+        return pvs;
     }
 
     private boolean isInfrastructureClass(Class<?> beanClass) {

@@ -84,7 +84,6 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             scanPackage(scanPath);
         }
 
-        int allCount = 0;
         List<Element> beanList = root.elements("bean");
         for (Element bean : beanList) {
 
@@ -130,9 +129,9 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             }
             // 注册 BeanDefinition
             getRegistry().registerBeanDefinition(beanName, beanDefinition);
-            allCount++;
         }
-        return allCount;
+        // count 统计有点问题，需要修改
+        return getRegistry().getBeanDefinitionNames().length;
     }
 
     private void scanPackage(String scanPath) {

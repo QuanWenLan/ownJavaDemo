@@ -1,6 +1,7 @@
 package org.quange.springframework.context.annotation;
 
 import cn.hutool.core.util.StrUtil;
+import org.quange.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import org.quange.springframework.beans.factory.config.BeanDefinition;
 import org.quange.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.quange.springframework.context.stereotype.Component;
@@ -30,6 +31,8 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
                 registry.registerBeanDefinition(determineBeanName(beanDefinition), beanDefinition);
             }
         }
+        // 注册处理注解的 BeanPostProcessor（@Autowired、@Value）
+        registry.registerBeanDefinition("org.quange.springframework.context.annotation.internalAutowiredAnnotationProcessor", new BeanDefinition(AutowiredAnnotationBeanPostProcessor.class));
     }
 
     private String resolveBeanScope(BeanDefinition beanDefinition) {

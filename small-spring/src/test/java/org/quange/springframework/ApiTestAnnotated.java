@@ -2,6 +2,7 @@ package org.quange.springframework;
 
 import org.junit.Test;
 import org.quange.springframework.annotation.IUserServiceAnnotated;
+import org.quange.springframework.annotationAutowired.IUserServiceAutowired;
 import org.quange.springframework.bean.IUserService;
 import org.quange.springframework.beans.BeansException;
 import org.quange.springframework.beans.factory.config.BeanPostProcessor;
@@ -50,5 +51,16 @@ public class ApiTestAnnotated {
         beanPostProcessors.remove(beanPostProcessor);
 
         System.out.println(beanPostProcessors.size());
+    }
+
+
+    /**
+     * 测试使用 @Autowired 和 @Value 注解实现注入
+     */
+    @Test
+    public void test_scan2() {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-scan-autowired.xml");
+        IUserServiceAutowired userService = applicationContext.getBean("userService", IUserServiceAutowired.class);
+        System.out.println("测试结果：" + userService.queryUserInfo());
     }
 }
