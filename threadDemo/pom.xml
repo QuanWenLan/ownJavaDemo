@@ -24,25 +24,12 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-    <!--Guava工程包含了若干被Google的 Java项目广泛依赖 的核心库
-    集合 [collections]
-    缓存 [caching]
-    原生类型支持 [primitives support]
-    并发库 [concurrency libraries]
-    通用注解 [common annotations]
-    字符串处理 [string processing]
-    I/O 等等-->
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>20.0</version>
-    </dependency>
 
     <!--disruptor并发框架-->
     <dependency>
       <groupId>com.lmax</groupId>
       <artifactId>disruptor</artifactId>
-      <version>3.2.1</version>
+      <version>3.3.4</version>
     </dependency>
   </dependencies>
 
