@@ -16,6 +16,7 @@ import springtest.aop.UserService;
 import springtest.aop.UserServiceImpl;
 import springtest.aware.TestAware;
 import springtest.beanpostprocessor.MyInstantiationAwareBeanPostProcessor;
+import springtest.cycle.dependency.TestSetterA;
 import springtest.listener.OrderEvent;
 import springtest.listener.TestEvent;
 import springtest.lookup.bean.GetBeanTest;
@@ -67,7 +68,9 @@ public class MainTest {
     @Test
     public void testSetterCycleDependency() throws Throwable {
         try {
-            new ClassPathXmlApplicationContext("classpath:cycleSetterDependency.xml");
+            ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:cycleSetterDependency.xml");
+            TestSetterA testSetterA = (TestSetterA)context.getBean("testSetterA");
+            testSetterA.test();
         } catch (Exception e) {
             // 因为要在创建 testC 时抛出
             Throwable el = e.getCause().getCause().getCause();

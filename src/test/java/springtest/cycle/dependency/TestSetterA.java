@@ -1,5 +1,7 @@
 package springtest.cycle.dependency;
 
+import springtest.aop.TestBean;
+
 /**
  * @author Vin lan
  * @className TestSetterA
@@ -15,5 +17,9 @@ public class TestSetterA {
 
     public void setSetterB(TestSetterB setterB) {
         this.setterB = setterB;
+    }
+
+    public void test() {
+        System.out.println("被方法增强了");
     }
 }
