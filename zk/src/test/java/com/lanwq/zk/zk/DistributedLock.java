@@ -36,6 +36,7 @@ public class DistributedLock {
     public  DistributedLock(String name) throws IOException, InterruptedException, KeeperException {
         // 获取连接
         zk = new ZooKeeper(address, 40000, new Watcher() {
+            // 注册了一次触发了事件之后，又继续监听。
             @Override
             public void process(WatchedEvent watchedEvent) {
                 if (watchedEvent.getState() == Event.KeeperState.SyncConnected) {
@@ -61,7 +62,7 @@ public class DistributedLock {
      * 加锁
      */
     public void zkLock() throws KeeperException, InterruptedException {
-        // 创建对应的临时节点
+        // 创建对应的临时节点。ZooDefs.Ids.OPEN_ACL_UNSAFE 是一个权限控制
         currentMode = zk.create("/locks/seq-", null, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
         // 判断创建的节点是否是最小的序号节点，如果是，获取到锁，如果不是，监听前一个节点
         List<String> children = zk.getChildren("/locks", false);
