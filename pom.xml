@@ -8,7 +8,7 @@
     <artifactId>javaThinkingDemo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <!--    识别不到 resources 下文件,把这打包方式注释掉 https://blog.csdn.net/weixin_43409994/article/details/118157694 -->
-    <!--    <packaging>pom</packaging>-->
+        <packaging>pom</packaging>
 
     <name>javaDemo Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
@@ -18,6 +18,7 @@
         <module>networkprogramming</module>
         <module>ThreadDemo</module>
         <module>mvctest</module>
+        <module>democode</module>
     </modules>
 
     <properties>
@@ -316,6 +317,17 @@
             <version>1.2</version>
         </dependency>
 
+        <!--
+        https://commons.apache.org/
+        可以从properties或者xml文件中加载软件的配置信息，用来构建支撑软件运行的基础环境。在一些配置文件较多较的复杂的情况下，
+        使用该配置工具比较可以简化配置文件的解析和管理。使用该配置需要引入：
+        commons-beanutils : 它利用Java的反射机制，从动态的生成对bean的getter和setter的调用代码，到模拟创建一个动态的bean
+        commons-lang : 处理Java基本对象方法的工具类包，该类包提供对字符、数组等基本对象的操作 Commons-Lang3 是它的增强
+        commons-logging : 提供统一的日志接口，同时兼顾轻量级和不依赖于具体的实现。
+        commons-collections : 对Java集合的扩展和增强
+        commons-digester:是XML到Java对象的映射工具集
+        commons-codec : 是编码和解码组件，提供常用的编码和解码方法，如DES、SHA1、MD5、Base64、URL和Soundx等
+                -->
         <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>

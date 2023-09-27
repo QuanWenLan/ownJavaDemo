@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="demo-consumer"/>
+<!-- unicast=false 表示多个消费者都能收到广播  -->
+    <dubbo:registry address="multicast://224.5.6.7:1234?unicast=false"/>
+    <dubbo:reference id="demoService" check="false" interface="com.lanwq.service.DemoService" timeout="2000"/>
+
+<!--
+    <dubbo:registry address="multicast://224.5.6.7:1234?unicast=false" />
+或者是
+    <dubbo:registry protocol="multicast" address="224.5.6.7:1234">
+        <dubbo:parameter key="unicast" value="false" />
+    </dubbo:registry>
+
+这样使用我目前没有问题。但是加上 version 又出现了找不到服务的问题
+
+为了减少广播量，Dubbo 缺省使用单播发送提供者地址信息给消费者，如果一个机器上同时启了多个消费者进程，消费者需声明 `unicast=false`，否则只会有一个消费者能收到消息;
+当服务者和消费者运行在同一台机器上，消费者同样需要声明`unicast=false`，否则消费者无法收到消息，导致No provider available for the service异常：
+一种写法：
+    <dubbo:application name="demo-consumer">
+        <dubbo:parameter key="unicast" value="false"/>
+    </dubbo:application>
+另一种写法：
+    <dubbo:consumer>
+        <dubbo:parameter key="unicast" value="false" />
+    </dubbo:consumer>
+
+    广播形式的注册中心不支持 version="1.0.0" ！！！！！！
+-->
+</beans>
