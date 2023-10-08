@@ -9,6 +9,8 @@
         <module>practiceinterface</module>
         <module>springbootmulticastprovider</module>
         <module>springbootmulticastconsumer</module>
+        <module>springbootzkprovider</module>
+        <module>springbootzkconsumer</module>
     </modules>
 
     <groupId>com.lanwq</groupId>
@@ -38,19 +40,6 @@
             <artifactId>dubbo</artifactId>
             <version>${dubbo.version}</version>
         </dependency>
-
-        <!--<dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-dependencies-zookeeper</artifactId>
-            <version>${dubbo.version}</version>
-            <type>pom</type>
-            <exclusions>
-                <exclusion>
-                    <artifactId>curator-client</artifactId>
-                    <groupId>org.apache.curator</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>-->
 
         <dependency>
             <groupId>org.apache.dubbo</groupId>
