@@ -1,0 +1,96 @@
+
+# 测试环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 9905
+  servlet:
+    # 应用的访问路径
+    context-path: /mahout
+    encoding:
+      charset: utf-8
+      force: true
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # 连接数满后的排队数，默认为100
+    accept-count: 1000
+    threads:
+      # tomcat最大线程数，默认为200
+      max: 800
+      # Tomcat启动初始化的线程数，默认值10
+      min-spare: 100
+#jasypt加密的密匙（写到启动参数里面）
+#jasypt:
+#  encryptor:
+#    password: hsmahout
+#    algorithm: PBEWithMD5AndDES
+#    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+#spring:
+#  # redis 配置
+#  # 服务模块
+#  devtools:
+#    restart:
+#      # 热部署开关
+#      enabled: false
+#  mvc:
+#    #springboot2.6.0中将SpringMVC 默认路径匹配策略从AntPathMatcher 更改为PathPatternParser，导致swagger出错，解决办法是切换回原先的AntPathMatcher
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
+#  servlet:
+#    multipart:
+#      #单个文件的大小
+#      max-file-size: 200MB
+#      #单次请求的文件的总大小
+#      max-request-size: 200MB
+#  # 数据库配置
+#  datasource:
+#    url: jdbc:mysql://192.168.2.117:3306/etwtp_hs?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+#    username: ENC(Xydty6ejpybC8fjvKloq6g==)
+#    password: ENC(gb7mObwl//bMJMmMoYUM0Q==)
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    hikari:
+#      minimum-idle: 5
+#      connection-timeout: 1800
+#      idle-timeout: 30000
+#      max-lifetime: 600000
+#      maximum-pool-size: 120
+#      pool-name: mahoutPool
+#  pid:
+#    file: RUNNING_PID
+## mybatis-plus soft delete config
+#mybatis-plus:
+#  #映射mapper.xml文件存放路径
+#  mapper-locations: classpath:/mapper/*Mapper.xml
+#  #实体扫描，多个package用逗号或者分号分隔
+#  type-aliases-package: com.example.mahoutdemo.entity,com.example.mahoutdemo.core.customer.commodity.operation
+#  configuration:
+#    #下划线转驼峰配置
+#    map-underscore-to-camel-cas: true
+#    #使用二级缓存容易出现脏读，建议避免使用二级缓存
+#    cache-enabled: false
+#    #指定 MyBatis 应如何自动映射列到字段或属性。 NONE 表示取消自动映射；PARTIAL 只会自动映射没有定义嵌套结果集映射的结果集。
+#    #FULL 会自动映射任意复杂的结果集（无论是否嵌套）。默认是partial，这是一种全局设置
+#    auto-mapping-behavior: full
+#    #控制台输出日志
+#  #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  global-config:
+#    db-config:
+#      logic-delete-field: isDeleted
+#      logic-delete-value: 1
+#      logic-not-delete-value: 0
+#  # 开启sql打印
+#  #configuration:
+#  # log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+## 日志配置
+logging:
+  level:
+    # 定义项目日志输出级别
+    cn.siccs: debug
+    org.springframework: warn
+  file:
+    path: ./log
+#file-data:
+#  suppCliPdFilepath: D:/projects/work/ETT/mahout/clientProductSuppData.txt
+#  greeCliPdFilepath: D:/projects/work/ETT/mahout/clientProductGreeData.txt
+#  catPdFilepath: D:/projects/work/ETT/mahout/categoryProductData.txt
+#  cliPdFilepath: /home/tester/project/hsMahout/clientProductData.txt
