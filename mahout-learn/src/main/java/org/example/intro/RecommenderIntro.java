@@ -3,13 +3,16 @@ package org.example.intro;
 import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
 import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;
 import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
+import org.apache.mahout.cf.taste.impl.similarity.CachingUserSimilarity;
 import org.apache.mahout.cf.taste.impl.similarity.PearsonCorrelationSimilarity;
 import org.apache.mahout.cf.taste.model.DataModel;
+import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,7 +25,7 @@ public class RecommenderIntro {
         try {
             DataModel model = new FileDataModel(new File(Objects.requireNonNull(RecommenderIntro.class.getClassLoader().getResource("intro.csv")).getPath()));
             UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
-            NearestNUserNeighborhood neighborhood = new NearestNUserNeighborhood(2, similarity, model);
+            UserNeighborhood neighborhood = new NearestNUserNeighborhood(2, similarity, model);
             // create Recommender engine
             Recommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
             // for user 1, recommend 1 item
