@@ -114,15 +114,11 @@ public class Testttt {
         System.out.println(Math.abs(between));
         Date date = new Date(121, 10, 1);
         System.out.println(date);
+    }
 
-        try {
-            String encode = URLEncoder.encode("/#!/link/transactionDetail/SO20221000000031", "utf-8");
-            System.out.println(encode);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        File file = new File("D:/projects/ownJavaDemo/target/javaThinkingDemo/WEB-INF/classes/springmvc.xml");
-        System.out.println(file.exists());
+    @Test
+    public void test6() {
+        boolean empty = String.valueOf(null).isEmpty();
+        System.out.println(empty);
     }
 }

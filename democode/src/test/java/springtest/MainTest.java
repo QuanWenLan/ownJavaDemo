@@ -10,6 +10,7 @@ import org.springframework.core.SpringVersion;
 import org.springframework.core.io.ClassPathResource;
 import springtest.annotation.AnnotationTest;
 import springtest.annotation.AutowiredTest;
+import springtest.annotation.multipleResource.ResourceTest;
 import springtest.aop.MyInvocationHandler;
 import springtest.aop.TestBean;
 import springtest.aop.UserService;
@@ -217,4 +218,11 @@ public class MainTest {
         testBean.testPrint2();
     }
 
+    @Test
+    public void testResource() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:testResourceAnnotation.xml");
+        /*ResourceTest testBean = (ResourceTest) context.getBean("resourceTest");
+        System.out.println(testBean.getService1());
+        System.out.println(testBean.getService2());*/
+    }
 }

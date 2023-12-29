@@ -56,7 +56,7 @@ public class ApiTest {
     @Test
     public void test_cglib() {
         Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(UserService.class);
+        enhancer.setSuperclass(CglibTestService.class);
         enhancer.setCallback(new NoOp() {
             @Override
             public int hashCode() {
