@@ -20,7 +20,8 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext container) {
         XmlWebApplicationContext appContext = new XmlWebApplicationContext();
-        appContext.setConfigLocation("/springmvc.xml");
+        // 需要这样子写才有用
+        appContext.setConfigLocation("/WEB-INF/springmvc.xml");
 
         ServletRegistration.Dynamic registration = container.addServlet("dispatcher", new DispatcherServlet(appContext));
         registration.setLoadOnStartup(1);
