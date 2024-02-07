@@ -22,7 +22,11 @@ public class BuilderTree {
     }
 
     /**
-     * 就是以 后序数组的最后一个元素为切割点，先切中序数组，根据中序数组，反过来在切后序数组。一层一层切下去，每次后序数组最后一个元素就是节点元素
+     * 就是以 后序数组的最后一个元素为切割点，先切中序数组，根据中序数组，反过来在切后序数组。一层一层切下去，每次后序数组最后一个元素就是节点元素。
+     * 后序数组是：左-右-中，中序数组是：左-中-右
+     *          3
+     *      9       20
+     *            15   7
      */
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         int inOrderLen = inorder.length;

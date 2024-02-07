@@ -84,4 +84,28 @@ public class MaxDepth {
         }
         return depth;
     }
+
+    int result;
+    void getdepth(TreeNode node, int depth) {
+        result = Math.max(depth, result); // 中
+
+        if (node.left == null && node.right == null) return ;
+
+        if (node.left != null) { // 左
+            depth++;    // 深度+1
+            getdepth(node.left, depth);
+            depth--;    // 回溯，深度-1
+        }
+        if (node.right != null) { // 右
+            depth++;    // 深度+1
+            getdepth(node.right, depth);
+            depth--;    // 回溯，深度-1
+        }
+    }
+    int maxDepth4(TreeNode root) {
+        result = 0;
+        if (root == null) return result;
+        getdepth(root, 1);
+        return result;
+    }
 }

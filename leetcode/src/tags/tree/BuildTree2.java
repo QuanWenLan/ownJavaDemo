@@ -12,13 +12,27 @@ import java.util.Arrays;
  **/
 public class BuildTree2 {
     public static void main(String[] args) {
-        int[] preorder = new int[]{3, 9, 20, 15, 7};
-        int[] inorder = new int[]{9, 3, 15, 20, 7};
+//        int[] preorder = new int[]{3, 9, 20, 15, 7};
+//        int[] inorder = new int[]{9, 3, 15, 20, 7};
+        int[] preorder = new int[]{1, 2, 4, 7, 3, 5, 6, 8};
+        int[] inorder = new int[]{4, 7, 2, 1, 5, 3, 8, 6};
         BuildTree2 obj = new BuildTree2();
         TreeNode root = obj.buildTree(preorder, inorder);
         System.out.println(root.toString());
+        // {1,2,4,7,3,5,6,8} , {4,7,2,1,5,3,8,6}
+        /**
+         *          1
+         *      2       3
+         *    4        5   6
+         *      7         8
+         */
     }
 
+    /**
+     *          3
+     *      9       20
+     *            15   7
+     */
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         int inOrderLen = inorder.length;
         int preOrderLen = preorder.length;
@@ -52,7 +66,7 @@ public class BuildTree2 {
         // 第三步：根据中序数组切割 前序数组
 
         // 前序数组的切割点怎么找？
-        // 前序数组没有明确的切割元素来进行左右切割，不像中序数组有明确的切割点，切割点左右分开就可以了。此时有一个很重的点，就是中序数组大小一定是和后序数组的大小相同的（这是必然）
+        // 前序数组没有明确的切割元素来进行左右切割，不像中序数组有明确的切割点，切割点左右分开就可以了。此时有一个很重的点，就是中序数组大小一定是和前序数组的大小相同的（这是必然）
         // 删除用掉的第一个元素
         preorder = Arrays.copyOfRange(preorder, 1, preOrderLen);
         // 前序左数组 左闭右开

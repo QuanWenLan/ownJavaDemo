@@ -36,6 +36,7 @@ public class IsBalanced {
 
 
     /**
+     * 既然要求比较高度，必然是要后序遍历: 左-右-跟
      * 统计子树的高度
      */
     public int countHeight(TreeNode node) {

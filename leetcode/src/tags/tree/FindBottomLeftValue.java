@@ -55,4 +55,40 @@ public class FindBottomLeftValue {
         return res;
     }
 
+    // 递归法
+    int result = -1;
+    int maxDepth = 0;
+    public int findBottomLeftValue2(TreeNode root) {
+        result = root.val;
+        // root 至少有一个节点
+        traversal(root, 0);
+        return result;
+    }
+
+    public void traversal(TreeNode node, int depth) {
+        if (node == null) {
+            return;
+        }
+        // 终止条件：需要遇到叶子节点的时候来更新最大的深度
+        if (node.left == null && node.right == null) {
+            if (depth > maxDepth) {
+                maxDepth = depth;
+                result = node.val;
+            }
+        }
+        // 左
+        if (node.left != null) {
+            // 深度加一
+            depth++;
+            traversal(node.left, depth);
+            depth--;
+        }
+        // 右
+        if (node.right != null) {
+            // 深度加一
+            depth++;
+            traversal(node.right, depth);
+            depth--;
+        }
+    }
 }
