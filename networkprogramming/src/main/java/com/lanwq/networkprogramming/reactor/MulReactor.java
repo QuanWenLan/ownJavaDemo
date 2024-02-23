@@ -14,6 +14,8 @@ import java.util.Set;
  * @className MulReactor
  * @description 对于多个CPU的机器，为充分利用系统资源，将Reactor拆分为两部分
  * @createTime 2023-03-28  10:34
+ * https://www.cnblogs.com/crazymakercircle/p/9833847.html
+ * 这里是服务端
  **/
 public class MulReactor implements Runnable {
     /**

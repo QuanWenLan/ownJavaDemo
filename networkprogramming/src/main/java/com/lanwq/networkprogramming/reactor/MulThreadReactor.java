@@ -13,6 +13,8 @@ import java.util.concurrent.Executors;
  * @className MulThreadReactor
  * @description 多线程的 Reactor 模式
  * @createTime 2023-03-28  10:29
+ * https://www.cnblogs.com/crazymakercircle/p/9833847.html
+ * 这里是多线程的客户端
  * （1）将Handler处理器的执行放入线程池，多线程进行业务处理。
  * <p>
  * （2）而对于Reactor而言，可以仍为单个线程。如果服务器为多核的CPU，为充分利用系统资源，可以将Reactor拆分为两个线程。
@@ -36,6 +38,8 @@ public class MulThreadReactor implements Runnable {
         selectionKey.attach(this);
         //第二步,注册Read就绪事件
         selectionKey.interestOps(SelectionKey.OP_READ);
+        // 唤醒当前正在 select() 方法上阻塞的 Selector。当一个 Selector 在 select() 方法上阻塞等待 I/O 事件时，
+        // 你可以调用 wakeup() 方法来中断阻塞，使 select() 方法立即返回。
         selector.wakeup();
     }
 

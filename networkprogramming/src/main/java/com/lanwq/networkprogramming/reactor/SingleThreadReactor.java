@@ -14,8 +14,9 @@ import java.util.Set;
  * @className SingleThreadReactor
  * @description 单线程的 Reactor 模式
  * @createTime 2023-03-28  10:18
+ * https://www.cnblogs.com/crazymakercircle/p/9833847.html
  * <p>
- * （1）Reactor：负责响应IO事件，当检测到一个新的事件，将其发送给相应的Handler去处理**；新的事件包含连接建立就绪、读就绪、写就绪等。
+ * （1）Reactor：负责响应IO事件，当检测到一个新的事件，将其发送给相应的Handler去处理；新的事件包含连接建立就绪、读就绪、写就绪等。
  * <p>
  * （2）Handler：将自身（handler）与事件绑定，负责事件的处理，完成channel的读入，完成处理业务逻辑后，负责将结果写出channel。
  **/
