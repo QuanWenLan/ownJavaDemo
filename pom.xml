@@ -19,6 +19,7 @@
         <module>ThreadDemo</module>
         <module>mvctest</module>
         <module>democode</module>
+        <module>servlet3.0-test</module>
     </modules>
 
     <properties>

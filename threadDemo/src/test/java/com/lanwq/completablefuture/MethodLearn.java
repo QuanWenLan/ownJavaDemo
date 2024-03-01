@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
@@ -156,11 +157,43 @@ public class MethodLearn {
     }
 
     /**
-     * ===== 结果转换 =====
+     * 获取结果
+     */
+    public void testComplete() {
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return "abc";
+        });
+        try {
+            // 等待一段时间，但是实际的异步任务并没有完成
+            TimeUnit.SECONDS.sleep(1);
+            System.out.println(completableFuture.get());
+            completableFuture.get(2L, TimeUnit.SECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println(completableFuture.join());
+        // 如果任务还没有完成，返回一个替代值
+        completableFuture.getNow("xxx");
+        System.out.println(completableFuture.complete("completeValue") + "\t" + completableFuture.join());
+    }
+
+
+    /**
+     * ===== 结果转换，对结果进行处理 =====
+     * 计算结果存在依赖关系
      * 将上一段任务的执行结果作为下一阶段任务的入参参与重新计算，产生新的结果。
      * thenApply转换的是泛型中的类型，返回的是同一个CompletableFuture；
      * thenCompose将内部的CompletableFuture调用展开来并使用上一个CompletableFuture调用的结果在下一步的CompletableFuture调用中进行运算，
      * 是生成一个新的CompletableFuture。
+     * thenRun(Runnable runnable)       	任务 A 执行完执行 B，并且 B 不需要 A 的结果
+     * thenAccept(Consumer action)	任务 A 执行完执行 B，B 需要 A 的结果，但是任务 B 无返回值
+     * thenApply(Function fn)			任务 A 执行完执行 B，B 需要 A 的结果，同时任务 B 有返回值
      */
     @Test
     public void testThenApply() {
@@ -176,6 +209,10 @@ public class MethodLearn {
             int result = number * 3;
             System.out.println("第二次运算：" + result);
             return result;
+        }).handle((value, e)->{
+            // thenApply 中途出现错误了之后会走不下去，handle 则可以继续往下走
+            System.out.println("handle 情况");
+            return value + 100;
         });
         try {
             System.out.println("future == future2: " + (future == future2));

@@ -1,9 +1,9 @@
 package com.lanwq.java8.lambda;
 
-import com.google.common.base.Function;
-import com.google.common.base.Supplier;
 
 import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author Lan
@@ -14,12 +14,15 @@ public class ConstructFunctionRef {
     public static void main(String[] args) {
         Supplier<Apple> c1 = Apple::new;
         Apple a1 = c1.get();
+        System.out.println(a1);
 
         Function<Integer, Apple> c2 = Apple::new;
         Apple a2 = c2.apply(10);
+        System.out.println(a2);
 
         BiFunction<Integer, String, Apple> c3 = Apple::new;
         Apple a3 = c3.apply(10, "绿色");
+        System.out.println(a3);
     }
 }
 
@@ -38,5 +41,13 @@ class Apple {
 
     public Apple() {
         System.out.println("默认");
+    }
+
+    @Override
+    public String toString() {
+        return "Apple{" +
+                "weight=" + weight +
+                ", color='" + color + '\'' +
+                '}';
     }
 }
