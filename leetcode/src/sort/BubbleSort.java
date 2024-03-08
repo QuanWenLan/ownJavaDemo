@@ -20,7 +20,7 @@ public class BubbleSort {
         //标志位
         boolean flag = true;
         //注意看 for 循环条件
-        for (int i = 0; i < len && flag; ++i) {
+        for (int i = 0; i < len - 1 && flag; ++i) {
             //如果没发生交换，则依旧为false，下次就会跳出循环
             flag = false;
             for (int j = 0; j < len - i - 1; ++j) {
