@@ -49,6 +49,11 @@
             <artifactId>lombok</artifactId>
             <version>1.18.12</version>
         </dependency>
+<!--        可以直接加入spring提供的es依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -75,6 +80,7 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+<!--            用于打包Spring Boot应用程序，并且可执行。version指定了Spring Boot插件的版本号，mainClass指定了应用程序的主类，即在启动应用程序时要执行的类。-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

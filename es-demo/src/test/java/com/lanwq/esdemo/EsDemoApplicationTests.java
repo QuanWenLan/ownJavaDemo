@@ -1,7 +1,9 @@
 package com.lanwq.esdemo;
 
 import com.alibaba.fastjson.JSON;
+import com.lanwq.esdemo.bean.Product;
 import com.lanwq.esdemo.bean.User;
+import com.lanwq.esdemo.staticdata.ItemData;
 import lombok.Data;
 import lombok.ToString;
 import org.elasticsearch.action.index.IndexRequest;
@@ -25,9 +27,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 
 import java.io.IOException;
+import java.util.List;
 
 @SpringBootTest
 class EsDemoApplicationTests {
@@ -38,7 +41,9 @@ class EsDemoApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(client);
+        System.out.println("RestHighLevelClient:" + client);
+        // elasticsearchTemplate
+        System.out.println("ElasticsearchRestTemplate: " + elasticsearchRestTemplate);
     }
 
 
@@ -164,4 +169,17 @@ class EsDemoApplicationTests {
         private String city;
         private String state;
     }
+
+    // index item
+    @Autowired
+    private ElasticsearchRestTemplate elasticsearchRestTemplate;
+
+    @Test
+    public void testIndexProduct() {
+        List<Product> products = ItemData.products;
+        Iterable<Product> iterable = elasticsearchRestTemplate.save(products);
+
+    }
+
+//    https://www.cnblogs.com/ZhuChangwu/p/11150374.html
 }

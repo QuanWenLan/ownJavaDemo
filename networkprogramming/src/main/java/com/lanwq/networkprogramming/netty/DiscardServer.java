@@ -31,8 +31,8 @@ public class DiscardServer {
 
     public void run() throws Exception {
         // (1) 创建 EventLoopGroup
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+        EventLoopGroup workerGroup = new NioEventLoopGroup(8);
         try {
             // (2) 创建 ServerBootstrap
             ServerBootstrap b = new ServerBootstrap();
