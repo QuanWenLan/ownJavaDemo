@@ -20,11 +20,7 @@ public class InsertSort {
      */
     private static int[] insertSort(int[] nums) {
         // 过程：1，第一个数字 5 是已经有序的，所以从第二个数字开始，和已经有序的序列进行比较
-        // 首先记录下来这个戴排序的数字（这里是 1）
-        // 2
-        // 2
-        // 2
-        // 2
+        // 首先记录下来这个待排序的数字（这里是 1）
         System.out.println("原始数组:" + Arrays.toString(nums));
         int len = nums.length;
         for (int i = 1; i < len; i++) {
