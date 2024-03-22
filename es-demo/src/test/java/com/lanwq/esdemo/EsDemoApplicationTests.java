@@ -13,6 +13,7 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
@@ -23,14 +24,27 @@ import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilde
 import org.elasticsearch.search.aggregations.metrics.Avg;
 import org.elasticsearch.search.aggregations.metrics.AvgAggregationBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
+import org.elasticsearch.search.sort.SortBuilders;
+import org.elasticsearch.search.sort.SortOrder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.data.elasticsearch.core.document.Document;
+import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.Query;
+import org.springframework.data.elasticsearch.core.query.UpdateQuery;
+import org.springframework.data.elasticsearch.core.query.UpdateResponse;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 class EsDemoApplicationTests {
@@ -170,7 +184,7 @@ class EsDemoApplicationTests {
         private String state;
     }
 
-    // index item
+    // index item， 这个底层还是用的 RestHighLevelClient
     @Autowired
     private ElasticsearchRestTemplate elasticsearchRestTemplate;
 
@@ -182,4 +196,91 @@ class EsDemoApplicationTests {
     }
 
 //    https://www.cnblogs.com/ZhuChangwu/p/11150374.html
+
+    /**
+     * 根据id更新部分字段
+     */
+    @Test
+    public void updateProductIndex() {
+        Map<String, Object> params = new HashMap<>();
+        //before:这是一款华为手机的产品介绍
+        params.put("content", "这是一款华为手机的产品介绍。相信华为，相信中国！");
+        Document document = Document.from(params);
+        UpdateQuery updateQuery = UpdateQuery.builder("1")  // 1 是文档的ID
+                .withDocument(document)
+                .build();
+
+        UpdateResponse result = elasticsearchRestTemplate.update(updateQuery, IndexCoordinates.of("product"));
+        System.out.println(JSON.toJSONString(result));  // 结果：{"result":"UPDATED"}
+    }
+
+    @Test
+    public void getProduct() {
+        Product product = elasticsearchRestTemplate.get("1", Product.class, IndexCoordinates.of("product"));
+        System.out.println(JSON.toJSONString(product));
+    }
+
+    @Test
+    public void delete() {
+        String result = elasticsearchRestTemplate.delete("5", IndexCoordinates.of("product"));
+        System.out.println(result);  // 结果："4"
+    }
+
+    @Test
+    public void searchForPage() {
+
+        /**
+         * 分页加排序
+         *  GET product/_search
+         * {
+         *   "query": {
+         *     "bool": {
+         *       "must": [
+         *         {
+         *           "match": {
+         *             "content": "手机"
+         *           }
+         *         }
+         *       ],
+         *       "filter": [
+         *         {
+         *           "range": {
+         *             "price": {
+         *               "gte": 3000,
+         *               "lte": 10000
+         *             }
+         *           }
+         *         }
+         *       ]
+         *     }
+         *   },
+         *   "sort": [
+         *     {
+         *       "price": {
+         *         "order": "desc"
+         *       }
+         *     }
+         *   ]
+         * }
+         */
+        Pageable pageable = PageRequest.of(0,2);  // page 从第 0 页开始
+        BoolQueryBuilder boolQuery = QueryBuilders.boolQuery()
+                .must(QueryBuilders.matchQuery("content", "手机"))
+                .filter(QueryBuilders.rangeQuery("price").gte(3000));
+        // 高亮
+        HighlightBuilder.Field highlightField = new HighlightBuilder.Field("content")
+                .preTags("<span>")
+                .postTags("</span>");
+
+        Query query = new NativeSearchQueryBuilder()
+                .withQuery(boolQuery)
+                .withPageable(pageable)
+                .withSorts(SortBuilders.fieldSort("price").order(SortOrder.DESC))
+                .withHighlightFields(highlightField)
+                .build();
+
+        org.springframework.data.elasticsearch.core.SearchHits<Product> product =
+                elasticsearchRestTemplate.search(query, Product.class, IndexCoordinates.of("product"));
+        System.out.println(JSON.toJSONString(product));
+    }
 }

@@ -20,13 +20,15 @@ public class SemaphoreTest1 {
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         executorService.submit(()->{
-            System.out.println(Thread.currentThread() + " over");
+            System.out.println(Thread.currentThread() + " over1");
             semaphore.release();
+            System.out.println(Thread.currentThread() + " over2 next");
         });
 
         executorService.submit(()->{
-            System.out.println(Thread.currentThread() + " over");
+            System.out.println(Thread.currentThread() + " over2");
             semaphore.release();
+            System.out.println(Thread.currentThread() + " over2 next");
         });
         semaphore.acquire(2);
         System.out.println("all child thread over");

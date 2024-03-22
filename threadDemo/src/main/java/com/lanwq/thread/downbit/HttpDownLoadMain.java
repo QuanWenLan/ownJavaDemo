@@ -53,7 +53,7 @@ public class HttpDownLoadMain {
             System.out.println("> " + fileName + " 已经下载完成，不需要进行下载");
             return;
         }
-        // 这里为什么要用这个list放 Future<Boolean>？？？
+        // 这里为什么要用这个list放 Future<Boolean>？？？这里应该是用来确认每个部分是否已经全部下载成功。
         List<Future<Boolean>> futureList = new ArrayList<>();
         if (localFileSize > 0) {
             System.out.println("> 开始断点续传 " + fileName);

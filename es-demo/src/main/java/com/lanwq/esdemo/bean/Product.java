@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.Setting;
 
 /**
  * @author Lan
@@ -13,9 +14,9 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  * @Document
  * 作用在类，标记实体类为文档对象
  * indexName：对应索引库名称---- 数据库名
- * type：对应在索引库中的类型---- 表名
+ * type：对应在索引库中的类型---- 表名（后面废弃了）
  * shards：分片数量，默认5
- * -replicas：副本数量，默认1
+ * replicas：副本数量，默认1
  * @Id
  * 作用在成员变量id上
  * 标记一个字段作为id主键(这个id别写错了,不然程序都启动不起来)
@@ -27,7 +28,8 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  * analyzer：分词器名称
  **/
 @Data
-@Document(indexName = "product", type = "product", shards = 1)
+@Setting(shards = 1, replicas = 1)
+@Document(indexName = "product")
 public class Product {
 
     @Id

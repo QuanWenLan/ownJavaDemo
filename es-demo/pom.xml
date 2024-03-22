@@ -12,7 +12,7 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
+        <spring-boot.version>2.6.0</spring-boot.version>
     </properties>
 
     <dependencies>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
-            <version>7.6.2</version>
+            <version>7.14.0</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -47,9 +47,10 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
+<!--            这里spring boot 的2.6.0版本和这个版本可能有冲突，导致不生效，1.18.12版本不行，需要1.18.22版本-->
+            <version>1.18.22</version>
         </dependency>
-<!--        可以直接加入spring提供的es依赖-->
+<!--        可以直接加入spring boot提供的es依赖，使用了上面的可以不用下面的，如果要使用的话，需要改成相同的springboot对应的es版本-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
