@@ -20,7 +20,7 @@ public class DigitalNumberConvertToEnglishNumber {
     //10以内的数字
     private static final String[] SINGLE_NUM_ARR = new String[]{"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
     //十几的数字
-    private static final String[] TEN_NUM_ARR = new String[]{"Ten", "Eleven", "Tweleve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+    private static final String[] TEN_NUM_ARR = new String[]{"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
     //整十的数字
     private static final String[] TEN_INTEGER_ARR = new String[]{"Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
 
@@ -78,7 +78,7 @@ public class DigitalNumberConvertToEnglishNumber {
     }
 
     private static String parseTeen(String s) {
-        //String[] a = new String[] { "Ten", "Eleven", "Tweleve", "Thirteen", "Fourteen", "Fifteen", "Sixteen","Seventeen", "Eighteen", "Nineteen" };
+        //String[] a = new String[] { "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen","Seventeen", "Eighteen", "Nineteen" };
         return TEN_NUM_ARR[Integer.parseInt(s) - 10];
     }
 

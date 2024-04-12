@@ -81,7 +81,7 @@ public class Testttt {
         int i2 = i >>> 16;
         System.out.println(">>> 16 位:" + i2);
         System.out.println(i ^ i2);
-        columns.put("a","a");
+        columns.put("a", "a");
         System.out.println(columns);
 
         ArrayList<Object> list = new ArrayList<>();
@@ -118,7 +118,7 @@ public class Testttt {
 
     @Test
     public void test6() {
-        boolean empty = String.valueOf(null).isEmpty();
-        System.out.println(empty);
+        // 测试序列化大小
+
     }
 }

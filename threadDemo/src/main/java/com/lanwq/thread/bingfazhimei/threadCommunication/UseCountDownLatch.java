@@ -8,6 +8,11 @@ import java.util.concurrent.CountDownLatch;
  * @className UseCountDownLatch
  * @description
  * @createTime 2022-07-01  15:56
+ * 多线程间的5种通信方式
+ * https://mp.weixin.qq.com/s/zRXvaR_2j0FSHPMqKACW6A
+ * 有两个线程，A 线程向一个集合里面依次添加元素“abc”字符串，一共添加十次，
+ * 当添加到第五次的时候，希望 B 线程能够收到 A 线程的通知，然后 B 线程执行相关的业务操作。
+ * 线程间通信的模型有两种：共享内存和消息传递
  **/
 public class UseCountDownLatch {
     public static void main(String[] args) {

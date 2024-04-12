@@ -13,7 +13,10 @@ public class Reducing {
     }
 
     private static int calculateTotalCalories() {
-        return menu.stream().collect(reducing(0, Dish::getCalories, (Integer i, Integer j) -> i + j));
+        return menu.stream().collect(reducing(0, // 初始值
+                Dish::getCalories, // 转换函数
+                (Integer i, Integer j) -> i + j)); // 累积函数
+        // counting 内部也是这个reducing的封装
     }
 
     private static int calculateTotalCaloriesWithMethodReference() {

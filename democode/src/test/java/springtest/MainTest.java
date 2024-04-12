@@ -37,7 +37,7 @@ public class MainTest {
         GetBeanTest test = (GetBeanTest) bf.getBean("getBeanTest");
         test.showMe();
 
-        // test replace method
+        // apply replace method
 
         /*ClassPathXmlApplicationContext bf2 = new ClassPathXmlApplicationContext("classpath:replaceMethod.xml");
         TestChangeMethod testChangeMethod = (TestChangeMethod) bf2.getBean("testChangeMethod");
@@ -124,7 +124,7 @@ public class MainTest {
         //        指定生成的字节码文件位置
         System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\projects\\ownJavaDemo");
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:testAop.xml");
-        TestBean testBean = (TestBean) context.getBean("test");
+        TestBean testBean = (TestBean) context.getBean("apply");
         testBean.test(new TestBean.Pa());
         // 这种方式创建出来的不是 代理 对象，而是普通的 new 出来的对象，不会触发 增强方法.上面使用 getBean 方法的才是 spring 创建的代理对象
         System.out.println("**************");

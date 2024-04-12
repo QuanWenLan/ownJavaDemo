@@ -2,7 +2,9 @@ package com.lanwq.java8.inaction.chapter8;
 
 import java.util.function.Consumer;
 
-
+/**
+ * 策略模式
+ */
 public class OnlineBankingLambda {
 
     public static void main(String[] args) {

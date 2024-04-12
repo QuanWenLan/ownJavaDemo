@@ -2,7 +2,7 @@ package com.lanwq.thread.bingfazhimei;
 
 /**
  * @author Vin lan
- * @className WaitNotifyInterupt
+ * @className WaitNotifyInterrupt
  * @description
  * @createTime 2021-10-27  17:24
  **/

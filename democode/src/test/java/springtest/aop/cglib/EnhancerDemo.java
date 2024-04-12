@@ -27,13 +27,13 @@ public class EnhancerDemo {
     }
 
     public void test() {
-        System.out.println("EnhancerDemo test()");
+        System.out.println("EnhancerDemo apply()");
         test2();
     }
 
     /**
      * cglib 创建的代理是通过继承来实现的。
-     * 代理类是被代理类的子类，子类重写了 test2() 方法，所以在 test() 中调用 test2() 会调用到子类中去（也就是代理类中，然后代理类中
+     * 代理类是被代理类的子类，子类重写了 test2() 方法，所以在 apply() 中调用 test2() 会调用到子类中去（也就是代理类中，然后代理类中
      * 又是会调用 intercept 方法）。
      */
     public void test2() {

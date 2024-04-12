@@ -68,7 +68,7 @@ public class Pizza {
 
         }*/
 
-        // test switch case
+        // apply switch case
         Pizza pizza = new Pizza();
         pizza.setStatus(PizzaStatus.ORDERED);
         System.out.println(pizza.getDeliveryTimeInDays());

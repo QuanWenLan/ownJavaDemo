@@ -1,12 +1,14 @@
 package com.lanwq.java8.inaction.chapter6;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import static com.lanwq.java8.inaction.chapter6.Dish.dishTags;
 import static com.lanwq.java8.inaction.chapter6.Dish.menu;
+import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
 
 /**
@@ -27,7 +29,7 @@ public class Grouping {
         System.out.println("Dishes grouped by type and caloric level: " + groupDishedByTypeAndCaloricLevel());
         System.out.println("Count dishes in groups: " + countDishesInGroups());
         System.out.println("Most caloric dishes by type: " + mostCaloricDishesByType());
-        System.out.println("Most caloric dishes by type: " + mostCaloricDishesByTypeWithoutOprionals());
+        System.out.println("Most caloric dishes by type: " + mostCaloricDishesByTypeWithoutOptionals());
         System.out.println("Sum calories by type: " + sumCaloriesByType());
         System.out.println("Caloric levels by type: " + caloricLevelsByType());
     }
@@ -51,6 +53,7 @@ public class Grouping {
         return null;
     }
 
+    // 一级分组
     private static Map<CaloricLevel, List<Dish>> groupDishesByCaloricLevel() {
         return menu.stream().collect(
                 groupingBy(dish -> {
@@ -60,14 +63,15 @@ public class Grouping {
                 }));
     }
 
+    // 多级分组
     private static Map<Dish.Type, Map<CaloricLevel, List<Dish>>> groupDishedByTypeAndCaloricLevel() {
         return menu.stream().collect(
-                groupingBy(Dish::getType,
+                groupingBy(Dish::getType, // 一级分类函数
                         groupingBy((Dish dish) -> {
                             if (dish.getCalories() <= 400) return CaloricLevel.DIET;
                             else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
                             else return CaloricLevel.FAT;
-                        })
+                        }) // 二级分类函数
                 )
         );
     }
@@ -82,7 +86,15 @@ public class Grouping {
                         reducing((Dish d1, Dish d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2)));
     }
 
-    private static Map<Dish.Type, Dish> mostCaloricDishesByTypeWithoutOprionals() {
+    private static Map<Dish.Type, Dish> mostCaloricDishesByType2() {
+        return menu.stream().collect(
+                groupingBy(Dish::getType,
+                        collectingAndThen(
+                                maxBy(comparingInt(Dish::getCalories)),
+                                Optional::get)));
+    }
+
+    private static Map<Dish.Type, Dish> mostCaloricDishesByTypeWithoutOptionals() {
         return menu.stream().collect(
                 groupingBy(Dish::getType,
                         collectingAndThen(

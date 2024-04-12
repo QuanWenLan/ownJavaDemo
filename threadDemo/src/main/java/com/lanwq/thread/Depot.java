@@ -69,4 +69,5 @@ public class Depot {
         }
     }
 }
+// JUC锁: 锁核心类AQS详解
 //原文链接：https://pdai.tech/md/java/thread/java-thread-x-lock-AbstractQueuedSynchronizer.html

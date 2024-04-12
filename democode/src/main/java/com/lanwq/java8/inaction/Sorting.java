@@ -15,11 +15,11 @@ import static java.util.Comparator.comparing;
  * @createTime 2023-10-26  16:30
  **/
 public class Sorting {
-    public static void main(String...args){
+    public static void main(String... args) {
 
         // 1
         List<Apple> inventory = new ArrayList<>();
-        inventory.addAll(Arrays.asList(new Apple(80,"green"), new Apple(155, "green"), new Apple(120, "red")));
+        inventory.addAll(Arrays.asList(new Apple(80, "green"), new Apple(155, "green"), new Apple(120, "red")));
 
         // [Apple{color='green', weight=80}, Apple{color='red', weight=120}, Apple{color='green', weight=155}]
         inventory.sort(new AppleComparator());
@@ -31,9 +31,10 @@ public class Sorting {
         // 2
         // [Apple{color='green', weight=30}, Apple{color='green', weight=80}, Apple{color='green', weight=155}]
         inventory.sort(new Comparator<Apple>() {
-            public int compare(Apple a1, Apple a2){
+            public int compare(Apple a1, Apple a2) {
                 return a1.getWeight().compareTo(a2.getWeight());
-            }});
+            }
+        });
         System.out.println(inventory);
 
         // reshuffling things a little
@@ -73,7 +74,7 @@ public class Sorting {
         private Integer weight = 0;
         private String color = "";
 
-        public Apple(Integer weight, String color){
+        public Apple(Integer weight, String color) {
             this.weight = weight;
             this.color = color;
         }
@@ -103,7 +104,7 @@ public class Sorting {
     }
 
     static class AppleComparator implements Comparator<Apple> {
-        public int compare(Apple a1, Apple a2){
+        public int compare(Apple a1, Apple a2) {
             return a1.getWeight().compareTo(a2.getWeight());
         }
     }

@@ -1,6 +1,8 @@
 package com.lanwq.java8.inaction.chapter8;
 
-
+/**
+ * 重构-策略模式
+ */
 public class StrategyMain {
 
     public static void main(String[] args) {

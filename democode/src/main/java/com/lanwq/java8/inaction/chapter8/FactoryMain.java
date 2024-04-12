@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-
+/**
+ * 重构-工厂模式
+ */
 public class FactoryMain {
 
     public static void main(String[] args) {
