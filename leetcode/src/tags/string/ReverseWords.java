@@ -113,7 +113,7 @@ public class ReverseWords {
 // 示例 2：
 //
 //
-//输入：s = "  hello world  "
+//输入：s = "  hello world  "
 //输出："world hello"
 //解释：颠倒后的字符串中不能存在前导空格和尾随空格。
 //
@@ -121,7 +121,7 @@ public class ReverseWords {
 // 示例 3：
 //
 //
-//输入：s = "a good   example"
+//输入：s = "a good   example"
 //输出："example good a"
 //解释：如果两个单词间有多余的空格，颠倒后的字符串需要将单词间的空格减少到仅有一个。
 //

@@ -6,6 +6,7 @@ package com.lanwq.thread.productandconsumer;
  * @Author lanwenquan
  * @Date 2020/06/18 09:15
  */
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
@@ -22,11 +23,11 @@ public class ProducerConsumerByLock {
     private static final int CAPACITY = 5;
     private static int i = 0;
     private static final Lock lock = new ReentrantLock();
-    private static final Condition fullCondition = lock.newCondition();		//队列满的条件
-    private static final Condition emptyCondition = lock.newCondition();		//队列空的条件
+    private static final Condition fullCondition = lock.newCondition();        //队列满的条件
+    private static final Condition emptyCondition = lock.newCondition();        //队列空的条件
 
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         Queue<Integer> queue = new LinkedList<Integer>();
 
         Thread producer1 = new Producer("P-1", queue, CAPACITY);
@@ -45,12 +46,12 @@ public class ProducerConsumerByLock {
     /**
      * 生产者
      */
-    public static class Producer extends Thread{
+    public static class Producer extends Thread {
         private Queue<Integer> queue;
         String name;
         int maxSize;
 
-        public Producer(String name, Queue<Integer> queue, int maxSize){
+        public Producer(String name, Queue<Integer> queue, int maxSize) {
             super(name);
             this.name = name;
             this.queue = queue;
@@ -58,14 +59,14 @@ public class ProducerConsumerByLock {
         }
 
         @Override
-        public void run(){
-            while(true){
+        public void run() {
+            while (true) {
 
                 //获得锁
                 lock.lock();
-                while(queue.size() == maxSize){
+                while (queue.size() == maxSize) {
                     try {
-                        System.out .println("Queue is full, Producer[" + name + "] thread waiting for " + "consumer to take something from queue.");
+                        System.out.println("Queue is full, Producer[" + name + "] thread waiting for " + "consumer to take something from queue.");
                         //条件不满足，生产阻塞
                         fullCondition.await();
                     } catch (InterruptedException ex) {
@@ -95,12 +96,12 @@ public class ProducerConsumerByLock {
     /**
      * 消费者
      */
-    public static class Consumer extends Thread{
+    public static class Consumer extends Thread {
         private Queue<Integer> queue;
         String name;
         int maxSize;
 
-        public Consumer(String name, Queue<Integer> queue, int maxSize){
+        public Consumer(String name, Queue<Integer> queue, int maxSize) {
             super(name);
             this.name = name;
             this.queue = queue;
@@ -108,12 +109,12 @@ public class ProducerConsumerByLock {
         }
 
         @Override
-        public void run(){
-            while(true){
+        public void run() {
+            while (true) {
                 //获得锁
                 lock.lock();
 
-                while(queue.isEmpty()){
+                while (queue.isEmpty()) {
                     try {
                         System.out.println("Queue is empty, Consumer[" + name + "] thread is waiting for Producer");
                         //条件不满足，消费阻塞

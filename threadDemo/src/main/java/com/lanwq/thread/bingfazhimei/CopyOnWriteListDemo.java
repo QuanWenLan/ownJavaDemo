@@ -6,6 +6,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * @author Lan
  * @createTime 2023-06-30  15:43
+ * 弱一致性指的是在一段时间内，不同线程对容器的访问可能看到不同的数据。具体来说，当一个线程对 CopyOnWriteArrayList 执行写操作时，
+ * 它会将容器的数据复制一份，然后进行修改，完成后再将修改后的数据替换原来的数据。在这个过程中，读操作可能仍然在读取原来的数据，因此在写操作完成之前，读操作可能无法看到最新的修改。
+ *
+ * 这种弱一致性的特性使得 CopyOnWriteArrayList 在读多写少的场景下非常适用，因为写操作不会影响读操作的性能，读操作也不会受到写操作的影响。
+ * 然而，需要注意的是，在使用 CopyOnWriteArrayList 时，如果对数据的实时性要求较高，可能需要额外的同步机制来确保数据的一致性。
  **/
 public class CopyOnWriteListDemo {
     public static void main(String[] args) throws InterruptedException {

@@ -8,8 +8,8 @@ package tags.array.slideWindow;
  **/
 public class MinSubArrayLen {
     /**
-     * 给定一个含有 n 个正整数的数组和一个正整数 target 。
-     * 找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, ..., numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0
+     * 给定一个含有 n 个正整数的数组和一个正整数 target 。
+     * 找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, ..., numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0
      * 输入：target = 7, nums = [2,3,1,2,4,3]
      * 输出：2
      * 解释：子数组 [4,3] 是该条件下的长度最小的子数组。
@@ -23,8 +23,8 @@ public class MinSubArrayLen {
 
     /**
      * 自己解法，for循环遍历，执行通过
-     * 用时：2297 ms, 在所有 Java 提交中击败了6.84%的用户
-     * 内存：49 MB, 在所有 Java 提交中击败了32.35%的用户
+     * 用时：2297 ms, 在所有 Java 提交中击败了6.84%的用户
+     * 内存：49 MB, 在所有 Java 提交中击败了32.35%的用户
      */
     public static int minSubArrayLen(int target, int[] nums) {
         int res = nums.length + 1, afterRes = 0, conditionIndex = 0, targetCopy = target;
@@ -53,8 +53,8 @@ public class MinSubArrayLen {
      * 窗口的起始位置如何移动：如果当前窗口的值大于s了，窗口就要向前移动了（也就是该缩小了）。
      * 窗口的结束位置如何移动：窗口的结束位置就是遍历数组的指针，也就是for循环里的索引。
      *
-     * 执行用时：1 ms, 在所有 Java 提交中击败了100.00%的用户
-     * 内存消耗：48.7 MB, 在所有 Java 提交中击败了63.75%的用户
+     * 执行用时：1 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：48.7 MB, 在所有 Java 提交中击败了63.75%的用户
      */
     public static int minSubArrayLen2(int target, int[] nums) {
         int result = Integer.MAX_VALUE;
