@@ -1,0 +1,34 @@
+GET http://localhost:80/api/item?id=99
+Accept: application/json
+
+###
+### 第一行：POST请求，请求地址
+### 第二行：请求头信息，多个请求头信息依次写下去(第三行、第四行……)
+### 第N行：写具体的请求体，这里是JSON串，请求头和请求体之间要空出一行
+POST http://localhost:8282/api/addArticle
+Content-Type: application/json
+
+{
+  "title":"文章标题",
+  "abst":"文章摘要",
+  "categoryId":1,
+  "authorName":"IT-CRUD"
+}
+### 书写是很简单的，httpClient.http编写也不难，细节注意点就可以。快捷键ptr，输入会有提示，直接回车即可。
+###
+
+GET http://localhost:45678/transactionproxyfailed/wrong1?name='tejfka'
+
+
+###
+
+GET http://localhost:45678/transactionproxyfailed/wrong2?name=teklkl
+
+###
+
+GET http://localhost:45678/transactionproxyfailed/wrong3?name=testkjlaa
+
+###
+GET http://localhost:45678/transactionproxyfailed/right1?name=testkjlaajkakka
+
+
